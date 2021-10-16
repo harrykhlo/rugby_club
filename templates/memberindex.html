@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Member</title>
+</head>
+<body>
+    <h1>Rugby Club Member</h1>
+    <h1>{{ memberdetaillist[3] }} {{ memberdetaillist[4] }}'s private page</h1>
+    <h2>Personal Details</h2>
+    {{ memberdetaillist }}<br/>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>First Name</th><th>Last Name</th><th>Address 1</th><th>Address 2</th><th>City</th><th>Email</th><th>Phone</th><th>Birthdate</th><th>Membership Status</th>
+          </th>
+        </thead>
+        <tbody>
+            <tr>
+            <td>{{memberdetaillist[3]}}</td><td>{{memberdetaillist[4]}}</td><td>{{memberdetaillist[5]}}</td><td>{{memberdetaillist[6]}}</td><td>{{memberdetaillist[7]}}</td><td>{{memberdetaillist[8]}}</td><td>{{memberdetaillist[9]}}</td><td>{{memberdetaillist[10]}}</td><td>{{memberdetaillist[11]}}</td>
+            </tr>  
+        </tbody>
+    </table>
+</body>
+</html>

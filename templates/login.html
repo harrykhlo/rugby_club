@@ -9,21 +9,21 @@
     <title>Login Page</title>
 </head>
 <body>
-    <h1>Login Page</h1>
-    <form>
+    <h1>Rugbuy Club Member Login</h1>
+    <form action="/login" method="POST">
         <div class="row mb-3">
           <label for="selectUser" class="col-sm-2 col-form-label">User Name</label>
           <div class="col-sm-5">
-            <select class="form-select" aria-label="Default select example" id="selectUser">
-                <option selected>Please select your name</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+            <select name = "selectedmember" class="form-select" aria-label="Default select example" id="selectUser">
+                <option value="None" selected>Please select your name</option>
+                {% for result in membernameidlist %}
+                <option value="{{result[0]}}">{{result[1]}} {{result[2]}}</option>
+                {% endfor %}
             </select>
           </div>
         </div>
-        
         <button type="submit" class="btn btn-primary">Sign in</button>
+        <!-- <input type="submit"/> -->
       </form>
 
 
