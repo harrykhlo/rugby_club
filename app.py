@@ -83,6 +83,21 @@ def login():
 
             # get the member's AdminAccess which is an integer (1 = admin member; 0 = general member)
             adminaccess = memberrecord[0][12]
+            clubid = memberrecord[0][1]
+            cur.execute(
+                "select ClubID, ClubName from clubs where ClubID = %s;", (clubid,))
+            clubidname = cur.fetchall()[0]  # tuple (club id, club name)
+            # print("testing---------------------------------------------")
+            # print(clubidname)
+            # print(type(clubidname))
+            teamid = memberrecord[0][2]
+            cur.execute(
+                "select TeamID, TeamName from teams where TeamID = %s;", (teamid,))
+            teamidname = cur.fetchall()[0]  # tuple (team id, team name)
+            # print("testing---------------------------------------------")
+            # print(teamidname)
+            # print(type(teamidname))
+
             if adminaccess:  # check if the memeber is admin or not
                 # route to admin's page
                 print("admin is logged in")
@@ -90,9 +105,14 @@ def login():
                 return render_template('adminindex.html', admindetaillist=memberrecord[0])
             else:  # if the memeber is not an admin
                 # route to member's page
+
+                cur.execute(
+                    "select NewsHeader, NewsByline, NewsDate, News from clubnews where ClubID=%s order by NewsDate DESC limit 3;", (clubidname[0],))
+                threelatestclubnews = cur.fetchall()
+
                 print("member is logged in")
                 print(memberrecord)
-                return render_template('memberindex.html', memberdetaillist=memberrecord[0])
+                return render_template('memberindex.html', memberdetaillist=memberrecord[0], clubidname=clubidname, teamidname=teamidname, threelatestclubnews=threelatestclubnews)
     # if request.method == 'GET':
     else:
         cur = getCursor()

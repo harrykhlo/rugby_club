@@ -10,17 +10,37 @@
 <body>
     <h1>Rugby Club Member</h1>
     <h1>{{ memberdetaillist[3] }} {{ memberdetaillist[4] }}'s private page</h1>
-    <h2>Personal Details</h2>
-    {{ memberdetaillist }}<br/>
+    <h2><u>Latest 3 Club News for {{ clubidname[1] }}</u></h2>
+    <!-- {{threelatestclubnews}} -->
     <table class="table table-hover">
         <thead>
           <tr>
-            <th>First Name</th><th>Last Name</th><th>Address 1</th><th>Address 2</th><th>City</th><th>Email</th><th>Phone</th><th>Birthdate</th><th>Membership Status</th>
+            <th>News Header</th><th>Journalist</th><th>Date</th><th>Content</th>
+          </th>
+        </thead>
+        <tbody>
+            {% for newsrecord in threelatestclubnews %}
+            <tr>
+                <td>{{newsrecord[0]}}</td><td>{{newsrecord[1]}}</td><td>{{newsrecord[2]}}</td><td>{{newsrecord[3]}}</td>
+            </tr>  
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <h2><u>Personal Details</u></h2>
+    <!-- {{ memberdetaillist }}<br/>
+    {{ clubidname }}<br/>
+    {{ teamidname }}<br/> -->
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>First Name</th><th>Last Name</th><th>Address 1</th><th>Address 2</th><th>City</th><th>Email</th><th>Phone</th><th>Birthdate</th><th>Team</th><th>Club</th>
           </th>
         </thead>
         <tbody>
             <tr>
-            <td>{{memberdetaillist[3]}}</td><td>{{memberdetaillist[4]}}</td><td>{{memberdetaillist[5]}}</td><td>{{memberdetaillist[6]}}</td><td>{{memberdetaillist[7]}}</td><td>{{memberdetaillist[8]}}</td><td>{{memberdetaillist[9]}}</td><td>{{memberdetaillist[10]}}</td><td>{{memberdetaillist[11]}}</td>
+            <td>{{memberdetaillist[3]}}</td><td>{{memberdetaillist[4]}}</td><td>{{memberdetaillist[5]}}</td><td>{{memberdetaillist[6]}}</td><td>{{memberdetaillist[7]}}</td><td>{{memberdetaillist[8]}}</td><td>{{memberdetaillist[9]}}</td><td>{{memberdetaillist[10]}}</td><td>{{teamidname[1]}}</td><td>{{clubidname[1]}}</td>
             </tr>  
         </tbody>
     </table>
