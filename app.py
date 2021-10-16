@@ -17,6 +17,7 @@ from flask import render_template
 from flask import request
 from flask import redirect
 from flask import url_for
+from datetime import date
 import mysql.connector
 import connect
 import uuid
@@ -110,9 +111,20 @@ def login():
                     "select NewsHeader, NewsByline, NewsDate, News from clubnews where ClubID=%s order by NewsDate DESC limit 3;", (clubidname[0],))
                 threelatestclubnews = cur.fetchall()
 
+                today = date.today()
+                # cur.execute(
+                #     "select * from fixtures;")
+                # cur.execute(
+                #     "select * FROM fixtures where FixtureDate >= '2021-09-21';")
+                cur.execute(
+                    "select * from fixtures where FixtureDate >= %s;", (today,))
+                upcomingfixtures = cur.fetchall()
+                print("Test----------------------------------------")
+                print(upcomingfixtures)
+
                 print("member is logged in")
                 print(memberrecord)
-                return render_template('memberindex.html', memberdetaillist=memberrecord[0], clubidname=clubidname, teamidname=teamidname, threelatestclubnews=threelatestclubnews)
+                return render_template('memberindex.html', memberdetaillist=memberrecord[0], clubidname=clubidname, teamidname=teamidname, threelatestclubnews=threelatestclubnews, today=today)
     # if request.method == 'GET':
     else:
         cur = getCursor()
