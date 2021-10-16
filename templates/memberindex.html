@@ -28,7 +28,20 @@
     </table>
     <br/>
     <h2><u>Upcoming Games with Your "{{teamidname[1]}}" Team on and after Today, {{today}}</u></h2>
-
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Date Time</th><th>Home Team</th><th>Away Team</th>
+          </th>
+        </thead>
+        <tbody>
+            {% for fixture in upcomingteamfixtures %}
+            <tr>
+                <td>{{fixture[1]}}</td><td>{{fixture[2]}}</td><td>{{fixture[3]}}</td>
+            </tr>  
+            {% endfor %}
+        </tbody>
+    </table>
     <br/>
     <h2><u>Personal Details</u></h2>
     <!-- {{ memberdetaillist }}<br/>

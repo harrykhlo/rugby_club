@@ -111,20 +111,27 @@ def login():
                     "select NewsHeader, NewsByline, NewsDate, News from clubnews where ClubID=%s order by NewsDate DESC limit 3;", (clubidname[0],))
                 threelatestclubnews = cur.fetchall()
 
-                today = date.today()
                 # cur.execute(
                 #     "select * from fixtures;")
                 # cur.execute(
                 #     "select * FROM fixtures where FixtureDate >= '2021-09-21';")
+
+                today = date.today()
                 cur.execute(
-                    "select * from fixtures where FixtureDate >= %s;", (today,))
-                upcomingfixtures = cur.fetchall()
-                print("Test----------------------------------------")
-                print(upcomingfixtures)
+                    "select FixtureID, FixtureDate,hteam.TeamName as HomeTeamName, \
+                    ateam.TeamName as AwayTeamName, HomeTeam as HomeTeamId, \
+                    AwayTeam as AwayTeamId FROM fixtures \
+                    join teams as hteam on fixtures.HomeTeam = hteam.TeamID \
+                    join teams as ateam on fixtures.AwayTeam = ateam.TeamID \
+                    where FixtureDate >= %s and (HomeTeam = %s or AwayTeam = %s) order by FixtureDate;", (today, teamid, teamid,))
+                upcomingteamfixtures = cur.fetchall()
+                print("testing---------------------------------------------")
+                print(upcomingteamfixtures)
+                print(type(upcomingteamfixtures))
 
                 print("member is logged in")
                 print(memberrecord)
-                return render_template('memberindex.html', memberdetaillist=memberrecord[0], clubidname=clubidname, teamidname=teamidname, threelatestclubnews=threelatestclubnews, today=today)
+                return render_template('memberindex.html', memberdetaillist=memberrecord[0], clubidname=clubidname, teamidname=teamidname, threelatestclubnews=threelatestclubnews, today=today, upcomingteamfixtures=upcomingteamfixtures)
     # if request.method == 'GET':
     else:
         cur = getCursor()
