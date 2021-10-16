@@ -45,8 +45,8 @@ def getID():
     return uuid.uuid4().fields[1]
 
 
-@app.route("/")
-def home():
+@app.route("/membernamelist")
+def membernamelist():
     cur = getCursor()
     # cur.execute("select id, company, last_name from customers;")
     cur.execute("select MemberID, MemberFirstName, MemberLastName from members;")
@@ -56,7 +56,7 @@ def home():
     return render_template('listmembernames.html', dbresult=select_result, dbcols=column_name)
 
 
-@app.route("/login", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         # print(request.form) # for checing only
