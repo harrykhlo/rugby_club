@@ -69,7 +69,7 @@ def login():
             print("Not member is given")
             cur = getCursor()
             cur.execute(
-                "select MemberID, MemberFirstName, MemberLastName from members;")
+                "select MemberID, MemberFirstName, MemberLastName, MembershipStatus from members;")
             select_result = cur.fetchall()
             return render_template('login.html', membernameidlist=select_result)
         else:  # if a member is selected from the login from in login.html
@@ -97,6 +97,7 @@ def login():
     else:
         cur = getCursor()
         cur.execute(
-            "select MemberID, MemberFirstName, MemberLastName from members;")
+            "select MemberID, MemberFirstName, MemberLastName, MembershipStatus from members;")
         select_result = cur.fetchall()
+        print(select_result)
         return render_template('login.html', membernameidlist=select_result)
