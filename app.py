@@ -125,12 +125,12 @@ def login():
                     join teams as ateam on fixtures.AwayTeam = ateam.TeamID \
                     where FixtureDate >= %s and (HomeTeam = %s or AwayTeam = %s) order by FixtureDate;", (today, teamid, teamid,))
                 upcomingteamfixtures = cur.fetchall()
-                print("testing---------------------------------------------")
-                print(upcomingteamfixtures)
-                print(type(upcomingteamfixtures))
+                # print("testing---------------------------------------------")
+                # print(upcomingteamfixtures)
+                # print(type(upcomingteamfixtures))
 
-                print("member is logged in")
-                print(memberrecord)
+                # print("member is logged in")
+                # print(memberrecord)
                 return render_template('memberindex.html', memberdetaillist=memberrecord[0], clubidname=clubidname, teamidname=teamidname, threelatestclubnews=threelatestclubnews, today=today, upcomingteamfixtures=upcomingteamfixtures)
     # if request.method == 'GET':
     else:
@@ -140,3 +140,85 @@ def login():
         select_result = cur.fetchall()
         print(select_result)
         return render_template('login.html', membernameidlist=select_result)
+
+
+@app.route("/memberupdate", methods=['GET', 'POST'])
+def memberupdate():
+    if request.method == "POST":
+        memberid = request.form.get('memberid')
+        firstname = request.form.get('firstname')
+        lastname = request.form.get('lastname')
+        address1 = request.form.get('address1')
+        address2 = request.form.get('address2')
+        city = request.form.get('city')
+        email = request.form.get('email')
+        phone = request.form.get('phone')
+        birthdate = request.form.get('birthdate')
+
+        cur = getCursor()
+        cur.execute(
+            "update members set MemberFirstName = %s, MemberLastName = %s, \
+            Address1 = %s, Address2 = %s, \
+            City=%s, Email=%s,  \
+            Phone=%s, Birthdate=%s \
+            where MemberID = %s;",
+            (firstname, lastname, address1, address2, city, email, phone, birthdate, memberid,))
+
+        cur.execute(
+            "select * from members where MemberID = %s;", (memberid,))
+        memberrecord = cur.fetchall()
+        # memberrecorddiscription = cur.description # for checking only
+        # print(memberrecorddiscription) # for checking only
+
+        clubid = memberrecord[0][1]
+        cur.execute(
+            "select ClubID, ClubName from clubs where ClubID = %s;", (clubid,))
+        clubidname = cur.fetchall()[0]  # tuple (club id, club name)
+
+        # print("testing---------------------------------------------")
+        # print(clubidname)
+        # print(type(clubidname))
+        teamid = memberrecord[0][2]
+        cur.execute(
+            "select TeamID, TeamName from teams where TeamID = %s;", (teamid,))
+        teamidname = cur.fetchall()[0]  # tuple (team id, team name)
+        # print("testing---------------------------------------------")
+        # print(teamidname)
+        cur.execute(
+            "select NewsHeader, NewsByline, NewsDate, News from clubnews where ClubID=%s order by NewsDate DESC limit 3;", (clubidname[0],))
+        threelatestclubnews = cur.fetchall()
+
+        today = date.today()
+        cur.execute(
+            "select FixtureID, FixtureDate,hteam.TeamName as HomeTeamName, \
+            ateam.TeamName as AwayTeamName, HomeTeam as HomeTeamId, \
+            AwayTeam as AwayTeamId FROM fixtures \
+            join teams as hteam on fixtures.HomeTeam = hteam.TeamID \
+            join teams as ateam on fixtures.AwayTeam = ateam.TeamID \
+            where FixtureDate >= %s and (HomeTeam = %s or AwayTeam = %s) order by FixtureDate;", (today, teamid, teamid,))
+        upcomingteamfixtures = cur.fetchall()
+        # print("testing---------------------------------------------")
+        # print(upcomingteamfixtures)
+        # print(type(upcomingteamfixtures))
+
+        # print("member is logged in")
+        # print(memberrecord)
+        return render_template('memberindex.html', memberdetaillist=memberrecord[0], clubidname=clubidname, teamidname=teamidname, threelatestclubnews=threelatestclubnews, today=today, upcomingteamfixtures=upcomingteamfixtures)
+        # return redirect("/")
+    else:
+        memberid = request.args.get("memberid")
+        if memberid == None:
+            # print("no member id is given ------------------------------")
+            return redirect("/")
+        else:
+            print(request.args)
+
+            print(memberid)
+
+            cur = getCursor()
+            # get the member details
+            cur.execute(
+                "select * from members where MemberID = %s;", (memberid,))
+            memberrecord = cur.fetchall()
+
+            return render_template('memberupdate.html', memberdetails=memberrecord[0])

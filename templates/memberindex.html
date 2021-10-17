@@ -9,7 +9,8 @@
 </head>
 <body>
     <h1>Rugby Club Member</h1>
-    <h1>{{ memberdetaillist[3] }} {{ memberdetaillist[4] }}'s private page</h1><br/><br/>
+    <h1>{{ memberdetaillist[3] }} {{ memberdetaillist[4] }}'s private page</h1>
+    <a class="btn btn-primary" href="/memberupdate?memberid={{memberdetaillist[0]}}" role="button">Update Personal Details</a><br/><br/>
     <h2><u>Latest 3 Club News for "{{ clubidname[1] }}" Club</u></h2>
     <!-- {{threelatestclubnews}} -->
     <table class="table table-hover">
