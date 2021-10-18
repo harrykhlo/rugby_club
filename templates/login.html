@@ -12,14 +12,19 @@
     <h1>Rugby Club Member Login</h1>
     <form action="/" method="POST">
         <div class="row mb-3">
-          <label for="selectUser" class="col-sm-2 col-form-label">User Name</label>
+          
+          <label for="selectmemberroute" class="col-sm-2 col-form-label">User Name</label>
           <div class="col-sm-5">
-            <select name = "selectedmember" class="form-select" aria-label="Default select example" id="selectUser">
-                <option value="None" selected>Please select your name</option>
-                {% for result in membernameidlist %}
-                  {%- if result[3] -%}
-                    <option value="{{result[0]}}">{{result[1]}} {{result[2]}}</option>
-                  {%- endif %}  
+            <select name = "selectmemberroute" class="form-select" aria-label="Default select example" id="selectmemberroute">
+                <option value="/" selected>Please select your name</option>
+                {% for memberidnamestatus in memberidnamestatuslist %}
+                  {%- if memberidnamestatus[3] -%}
+                    {%- if memberidnamestatus[4] -%}
+                      <option value="/admin?adminid={{memberidnamestatus[0]}}">{{memberidnamestatus[1]}} {{memberidnamestatus[2]}}</option>
+                    {%- else %}
+                      <option value="/member?memberid={{memberidnamestatus[0]}}">{{memberidnamestatus[1]}} {{memberidnamestatus[2]}}</option>
+                    {%- endif %}  
+                  {%- endif %} 
                 {% endfor %}
             </select>
           </div>
@@ -28,8 +33,5 @@
         <!-- <input type="submit"/> -->
       </form>
 
-
-
-    
 </body>
 </html>
