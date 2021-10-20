@@ -165,39 +165,39 @@ def memberupdate():
 @app.route("/admin", methods=['GET', 'POST'])
 def admin():
     adminid = request.args.get("adminid")
-    print("adminid------Testing---------")
-    print(adminid)
+    # print("adminid------Testing---------")
+    # print(adminid)
     cur = getCursor()
     cur.execute(
         "select * from members where MemberID = %s;", (adminid,))
     adminrecord = cur.fetchall()[0]
-    print(adminrecord)
+    # print(adminrecord)
 
     clubid = adminrecord[1]
     cur.execute(
         "select * from clubs where ClubID = %s;", (clubid,))
     clubrecord = cur.fetchall()[0]
-    print(clubrecord)
+    # print(clubrecord)
 
     cur.execute(
         "select * from clubnews where ClubID = %s order by NewsDate desc;", (clubid,))
     clubnewsrecord = cur.fetchall()
-    print(clubnewsrecord)
+    # print(clubnewsrecord)
 
     cur.execute(
         "select * from members where ClubID = %s order by MemberFirstName, MemberLastName;", (clubid,))
     memberrecord = cur.fetchall()
-    print(memberrecord)
+    # print(memberrecord)
 
     cur.execute(
         "select * from teams where ClubID = %s order by TeamName;", (clubid,))
     teamrecord = cur.fetchall()
-    print(teamrecord)
+    # print(teamrecord)
 
     cur.execute(
         "select * from teams where ClubID <> %s order by TeamName;", (clubid,))
     otherteamrecord = cur.fetchall()
-    print(otherteamrecord)
+    # print(otherteamrecord)
 
     return render_template('admin.html', adminrecord=adminrecord, clubrecord=clubrecord,
                            clubnewsrecord=clubnewsrecord, memberrecord=memberrecord,
@@ -207,14 +207,26 @@ def admin():
 @app.route("/news/add", methods=['GET', 'POST'])
 def newsadd():
     if request.method == "POST":
+        adminid = request.form.get('adminid')
+        clubid = request.form.get('clubid')
         newsheader = request.form.get('newsheader')
         newsbyline = request.form.get('newsbyline')
-        print("testing newsheader----------")
-        print(newsheader)
-        print(newsbyline)
+        newsdate = request.form.get('newsdate')
+        news = request.form.get('news')
+        # print("testing newsheader----------")
+        # print(adminid)
+        # print(clubid)
+        # print(newsheader)
+        # print(newsbyline)
+        # print(newsdate)
+        # print(news)
+        cur = getCursor()
+        cur.execute(
+            "insert into ClubNews values (null, %s, %s, %s,  %s, %s);",
+            (clubid, newsheader, newsbyline, newsdate, news,))
 
-        return (redirect(f"/admin?adminid=5643"))
+        return (redirect(f"/admin?adminid={adminid}"))
     else:
         clubid = request.args.get("clubid")
-
-        return render_template('newsadd.html', clubid=clubid)
+        adminid = request.args.get("adminid")
+        return render_template('newsadd.html', clubid=clubid, adminid=adminid)

@@ -9,9 +9,11 @@
 </head>
 <body>
     <h1>News Add</h1>
-    <p>{{clubid}}</p>
+    <!-- <p>{{clubid}}</p>
+    <p>{{adminid}}</p> -->
     <form action="/news/add" method="POST">
         <input type="hidden" name="clubid" value="{{clubid}}" />
+        <input type="hidden" name="adminid" value="{{adminid}}" />
         <div class="form-floating">
             <textarea class="form-control" placeholder="News Header" id="newsheader" name="newsheader"></textarea>
             <label for="newsheader">News Header</label>
@@ -22,7 +24,7 @@
         </div>
         <div class="form-floating">
             <textarea class="form-control" placeholder="News Date" id="newsdate" name="newsdate"></textarea>
-            <label for="newsdate">News Date</label>
+            <label for="newsdate">News Date (yyyy-mm-dd)</label>
         </div>
         <div class="form-floating">
             <textarea class="form-control" placeholder="News" id="news" name="news"></textarea>
