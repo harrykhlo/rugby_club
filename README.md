@@ -61,4 +61,9 @@ This is an application for rugby clubs and their members managing their game act
   - Add members with details belonging to admin's club;
   - Edit existing member details belonging to admin's club;
   - Edit member status (i.e. de-activate or re-activate members) belonging to admin's club;
-  - Give a list of active members for printing purposes. - User's personal details.
+  - Give a list of active members for printing purposes;
+  - Add new teams with details belonging to admin's club;
+  - Join members to a team belonging to admin's club;
+  - Add new opposition teams with details belonging to other clubs;
+  - Create either home or away fixtures with a team belonging to admin's club and another team in the same grade; and
+  - Give a list of all active members eligible to play in a specific grade on a given date.
