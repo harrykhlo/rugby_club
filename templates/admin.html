@@ -19,7 +19,7 @@
     {{clubrecord}}
     <br>
     <h2><u>"{{clubrecord[1]}}" News</u></h2>
-    <a class="btn btn-primary" href="/news/add?clubid={{adminrecord[1]}}&adminid={{adminrecord[0]}}" role="button">Add Club News</a><br/><br/>
+    <a class="btn btn-primary" href="/admin/news/add?clubid={{adminrecord[1]}}&adminid={{adminrecord[0]}}" role="button">Add Club News</a><br/><br/>
     <table class="table table-hover">
         <thead>
           <tr>
@@ -40,6 +40,22 @@
     <a class="btn btn-primary" href="#" role="button">Add Member</a>
     <a class="btn btn-success" href="#" role="button">Edit Member</a><br/><br/>
     {{memberrecord}}
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>First Name</th><th>Last Name</th><th>Address 1</th><th>Address 2</th><th>City</th><th>Email</th><th>Phone</th><th>Birthdate</th>
+          </th>
+        </thead>
+        <tbody>
+            {% for member in memberrecord %}
+            <tr>
+                <td>{{member[3]}}</td><td>{{member[4]}}</td><td>{{member[5]}}</td><td>{{member[6]}}</td><td>{{member[7]}}</td><td>{{member[8]}}</td><td>{{member[9]}}</td><td>{{member[10]}}</td>
+            </tr>  
+            {% endfor %}
+        </tbody>
+    </table>    
+
     <br>
     <h2><u>"{{clubrecord[1]}}" Teams</u></h2>
     {{teamrecord}}

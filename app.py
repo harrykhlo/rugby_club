@@ -204,7 +204,7 @@ def admin():
                            teamrecord=teamrecord, otherteamrecord=otherteamrecord)
 
 
-@app.route("/news/add", methods=['GET', 'POST'])
+@app.route("/admin/news/add", methods=['GET', 'POST'])
 def newsadd():
     if request.method == "POST":
         adminid = request.form.get('adminid')
@@ -229,4 +229,4 @@ def newsadd():
     else:
         clubid = request.args.get("clubid")
         adminid = request.args.get("adminid")
-        return render_template('newsadd.html', clubid=clubid, adminid=adminid)
+        return render_template('adminnewsadd.html', clubid=clubid, adminid=adminid)
