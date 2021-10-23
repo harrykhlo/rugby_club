@@ -43,3 +43,22 @@ This is an application for rugby clubs and their members managing their game act
 
 - Route of Member Update Personal Detail Page
   The member page is at /member/update of the site.
+
+## Admin page
+
+- Functions of Admin Page
+  This Admin page is shown after an admin user gets into the system via the login page. The admin can find the following information on the page:
+
+  - All news belong to admin's club;
+  - All member details belong to admin's club;
+  - All team details belong to admin's club;
+  - All team detials belong to other clubs; and
+  - All fixtures.
+
+- The admin can also initiate the following actions on the page:
+
+  - Add new news belonging to admin's club;
+  - Add members with details belonging to admin's club;
+  - Edit existing member details belonging to admin's club;
+  - Edit member status (i.e. de-activate or re-activate members) belonging to admin's club;
+  - Give a list of active members for printing purposes. - User's personal details.
