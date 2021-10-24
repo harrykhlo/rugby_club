@@ -204,7 +204,7 @@ def admin():
     cur.execute(
         "select * from teams join \
         grades on teams.TeamGrade = grades.GradeID join \
-        clubs on teams.ClubID = clubs.ClubID where clubs.ClubID <> %s order by clubs.ClubName, GradeMinimumAge;", (clubid,))
+        clubs on teams.ClubID = clubs.ClubID where clubs.ClubID <> %s order by GradeMinimumAge, clubs.ClubName;", (clubid,))
     otherteamrecord = cur.fetchall()
     # print(otherteamrecord)
 
