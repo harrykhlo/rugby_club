@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Admin toggles Member Status</title>
+</head>
+<body>
+    <h1>Admin toggles {{membername[0]}} {{membername[1]}}'s Status</h1>
+
+    {%- if membershipstatus -%}
+        <h3>Are you sure of <u>de-activating</u> {{membername[0]}} {{membername[1]}}'s status?</h3>
+    {%- else %}
+        <h3>Are you sure of <u>re-activating</u> {{membername[0]}} {{membername[1]}}'s status?</h3>
+    {%- endif %}  
+
+    <form action="/admin/member/activate" method="POST">
+        <input type="hidden" name="adminid" value={{adminid}} />
+        <input type="hidden" name="memberid" value={{memberid}} />
+        {%- if membershipstatus -%}
+            <input type="hidden" name="membershipstatus" value=0 />    
+            <button type="submit" class="btn btn-primary">De-activate</button>
+        {%- else %}
+            <input type="hidden" name="membershipstatus" value=1 />  
+            <button type="submit" class="btn btn-primary">Re-activate</button>
+        {%- endif %} 
+        <!-- <button type="submit" class="btn btn-primary">Submit</button>      -->
+        <a href="/admin?adminid={{adminid}}" class="btn btn-primary" role="button" aria-pressed="true">Cancel</a>
+    </form>
+</body>
+</html>

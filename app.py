@@ -343,3 +343,36 @@ def adminmemberadd():
         print(clubidname)
         # return render_template('adminmemberadd.html', memberdetails=memberrecord, adminid=adminid)
         return render_template('adminmemberadd.html', adminrecord=adminrecord, clubidname=clubidname)
+
+
+@app.route("/admin/member/activate", methods=['GET', 'POST'])
+def adminmemberactivate():
+    if request.method == "POST":
+
+        adminid = request.form.get('adminid')
+        memberid = request.form.get('memberid')
+        membershipstatus = request.form.get('membershipstatus')
+
+        print("Testing admin toggles member status -------------------------------")
+        print(adminid)
+        print(memberid)
+        print(membershipstatus)
+        cur = getCursor()
+        cur.execute(
+            "update members set MembershipStatus = %s where MemberID = %s;",
+            (membershipstatus, memberid,))
+        return(redirect(f"/admin?adminid={adminid}"))
+    else:
+        memberid = request.args.get("memberid")
+        membershipstatus = int(request.args.get("membershipstatus"))
+        adminid = request.args.get("adminid")
+        print("Harry testing ----membershipstatus-------------")
+        print(memberid)
+        print(membershipstatus)
+        print(adminid)
+        cur = getCursor()
+        cur.execute(
+            "select MemberFirstName, MemberLastName from members where MemberID = %s;", (memberid,))
+        membername = cur.fetchall()[0]
+        # print(membername)
+        return render_template('adminmemberactivate.html', adminid=adminid, memberid=memberid, membershipstatus=membershipstatus, membername=membername)
