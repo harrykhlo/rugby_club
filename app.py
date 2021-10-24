@@ -420,3 +420,27 @@ def adminclubteamadd():
         print(clubid)
         print(graderecord)
         return render_template('adminclubteamadd.html', graderecord=graderecord, adminid=adminid, clubid=clubid)
+
+
+@app.route("/admin/oppositionteam/add", methods=['GET', 'POST'])
+def adminoppositionteamadd():
+    if request.method == "POST":
+        adminid = 5643
+        return(redirect(f"/admin?adminid={adminid}"))
+    else:
+        adminid = request.args.get("adminid")
+        clubid = request.args.get("clubid")
+        cur = getCursor()
+        cur.execute(
+            "select * from grades;")
+        graderecord = cur.fetchall()
+        cur.execute(
+            "select * from clubs where ClubID<>%s;", (clubid,))
+        clubrecord = cur.fetchall()
+        print("Harry testing -/admin/oppositionteam/add--------- ")
+        print(adminid)
+        print(clubid)
+        print(graderecord)
+        print("")
+        print(clubrecord)
+        return render_template('adminoppositionteamadd.html', graderecord=graderecord, clubrecord=clubrecord, adminid=adminid, clubid=clubid)
