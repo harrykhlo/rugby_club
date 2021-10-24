@@ -385,3 +385,38 @@ def adminmemberactivate():
         membername = cur.fetchall()[0]
         # print(membername)
         return render_template('adminmemberactivate.html', adminid=adminid, memberid=memberid, membershipstatus=membershipstatus, membername=membername)
+
+
+@app.route("/admin/clubteam/add", methods=['GET', 'POST'])
+def adminclubteamadd():
+    if request.method == "POST":
+        adminid = request.form.get("adminid")
+        gradeid = request.form.get("gradeid")
+        clubid = request.form.get("clubid")
+        teamname = request.form.get("teamname")
+        print("Harry testing post -/admin/clubteam/add--------- ")
+        print(adminid)
+        print(gradeid)
+        print(clubid)
+        print(teamname)
+        cur = getCursor()
+        cur.execute(
+            "insert into teams values (null, %s, %s, %s); ",
+            (clubid, teamname, gradeid,))
+        # adminid = 5643
+        return(redirect(f"/admin?adminid={adminid}"))
+    else:
+
+        adminid = request.args.get("adminid")
+        clubid = request.args.get("clubid")
+
+        print("Harry testing -/admin/clubteam/add--------- ")
+
+        cur = getCursor()
+        cur.execute(
+            "select * from grades;")
+        graderecord = cur.fetchall()
+        print(adminid)
+        print(clubid)
+        print(graderecord)
+        return render_template('adminclubteamadd.html', graderecord=graderecord, adminid=adminid, clubid=clubid)
