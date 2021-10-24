@@ -190,8 +190,13 @@ def admin():
     # print(memberrecord)
 
     cur.execute(
-        "select * from teams where ClubID = %s order by TeamName;", (clubid,))
+        "select * from teams join grades on teams.TeamGrade = grades.GradeID where ClubID = %s order by GradeMinimumAge;", (clubid,))
     teamrecord = cur.fetchall()
+
+    # cur.execute(
+    #     "select * from teams where ClubID = %s order by TeamName;", (clubid,))
+    # teamrecord = cur.fetchall()
+
     # print(teamrecord)
 
     cur.execute(
