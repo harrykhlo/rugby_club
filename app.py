@@ -195,18 +195,21 @@ def admin():
         clubs on teams.ClubID = clubs.ClubID where clubs.ClubID = %s order by GradeMinimumAge;", (clubid,))
     teamrecord = cur.fetchall()
 
-    # cur.execute(
-    #     "select * from teams where ClubID = %s order by TeamName;", (clubid,))
-    # teamrecord = cur.fetchall()
-
-    # print(teamrecord)
-
     cur.execute(
         "select * from teams join \
         grades on teams.TeamGrade = grades.GradeID join \
         clubs on teams.ClubID = clubs.ClubID where clubs.ClubID <> %s order by GradeMinimumAge, clubs.ClubName;", (clubid,))
     otherteamrecord = cur.fetchall()
     # print(otherteamrecord)
+
+    cur.execute(
+        "select * from fixtures \
+            join teams as hteam on fixtures.HomeTeam = hteam.TeamID \
+            join teams as ateam on fixtures.AwayTeam = ateam.TeamID \
+            order by FixtureDate;")
+    fixturerecord = cur.fetchall()
+    print("Harry testing -----fixturerecord------------")
+    print(fixturerecord)
 
     return render_template('admin.html', adminrecord=adminrecord, clubrecord=clubrecord,
                            clubnewsrecord=clubnewsrecord, memberrecord=memberrecord,
@@ -429,7 +432,15 @@ def adminoppositionteamadd():
         gradeid = request.form.get("gradeid")
         slectedclubid = request.form.get("slectedclubid")
         teamname = request.form.get("teamname")
-
+        print("Harry testing post -/admin/oppositionteam/add--------- ")
+        print(adminid)
+        print(gradeid)
+        print(slectedclubid)
+        print(teamname)
+        cur = getCursor()
+        cur.execute(
+            "insert into teams values (null, %s, %s, %s); ",
+            (slectedclubid, teamname, gradeid,))
         # adminid = 5643
         return(redirect(f"/admin?adminid={adminid}"))
     else:
