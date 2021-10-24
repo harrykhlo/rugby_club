@@ -9,9 +9,9 @@
 </head>
 <body>
     <h1>"{{clubrecord[1]}}" Admin</h1>
-    {{adminrecord}}
+    <!-- {{adminrecord}}
     <br/>
-    {{clubrecord}}
+    {{clubrecord}} -->
     <br>
     <h2><u>"{{clubrecord[1]}}" News</u></h2>
     <a class="btn btn-primary" href="/admin/news/add?clubid={{adminrecord[1]}}&adminid={{adminrecord[0]}}" role="button">Add Club News</a><br/><br/>
@@ -59,28 +59,44 @@
 
     <br>
     <h2><u>"{{clubrecord[1]}}" Teams</u></h2>
+    <a class="btn btn-primary" href="#" role="button">Add Club Team</a><br/><br/>
+    
     <!-- {{teamrecord}} -->
 
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>Team Name</th><th>Grade</th>
+          <th>Team Name</th><th>Grade</th><th>Club Name</th>
         </th>
       </thead>
       <tbody>
           {% for team in teamrecord %}
           <tr>
-              <td>{{team[2]}}</td><td>{{team[5]}}</td>
+              <td>{{team[2]}}</td><td>{{team[5]}}</td><td>{{team[9]}}</td>
           </tr>  
           {% endfor %}
       </tbody>
-  </table>
+    </table>
 
 
     <br>
-    <h2><u>Other Teams</u></h2>
-    {{otherteamrecord}}
-
+    <h2><u>Other Opposition Teams</u></h2>
+    <a class="btn btn-primary" href="#" role="button">Add Opposition Team</a><br/><br/>
+    <!-- {{otherteamrecord}} -->
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Team Name</th><th>Grade</th><th>Club Name</th>
+        </th>
+      </thead>
+      <tbody>
+          {% for team in otherteamrecord %}
+          <tr>
+              <td>{{team[2]}}</td><td>{{team[5]}}</td><td>{{team[9]}}</td>
+          </tr>  
+          {% endfor %}
+      </tbody>
+    </table>
     
 </body>
 </html>

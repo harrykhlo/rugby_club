@@ -190,7 +190,9 @@ def admin():
     # print(memberrecord)
 
     cur.execute(
-        "select * from teams join grades on teams.TeamGrade = grades.GradeID where ClubID = %s order by GradeMinimumAge;", (clubid,))
+        "select * from teams join \
+        grades on teams.TeamGrade = grades.GradeID join \
+        clubs on teams.ClubID = clubs.ClubID where clubs.ClubID = %s order by GradeMinimumAge;", (clubid,))
     teamrecord = cur.fetchall()
 
     # cur.execute(
@@ -200,7 +202,9 @@ def admin():
     # print(teamrecord)
 
     cur.execute(
-        "select * from teams where ClubID <> %s order by TeamName;", (clubid,))
+        "select * from teams join \
+        grades on teams.TeamGrade = grades.GradeID join \
+        clubs on teams.ClubID = clubs.ClubID where clubs.ClubID <> %s order by clubs.ClubName, GradeMinimumAge;", (clubid,))
     otherteamrecord = cur.fetchall()
     # print(otherteamrecord)
 
