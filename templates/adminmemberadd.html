@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Admin Adds Member</title>
+</head>
+<body>
+    <h1>Admin Adds New Member to "{{clubidname[1]}}"</h1>
+    {{clubidname}}
+    {{adminrecord}}
+
+    <form action="/admin/member/add" method="POST">
+        <input type="hidden" name="adminid" value="{{adminrecord[0]}}" />
+        <input type="hidden" name="memberid" value="null" />
+        <input type="hidden" name="clubid" value="{{adminrecord[1]}}" />
+        <input type="hidden" name="teamid" value="null" />
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" name="firstname" required /> <br/>
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="lastname" name="lastname" required /> <br/>
+        <label for="address1">Address 1:</label>
+        <input type="text" id="address1" name="address1" /> <br/>
+        <label for="address2">Address 2:</label>
+        <input type="text" id="address2" name="address2" /> <br/>
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required /> <br/>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required /> <br/>
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" /> <br/>
+        <label for="birthdate">Birthdate (yyyy-mm-dd):</label>
+        <input type="text" id="birthdate" name="birthdate" required /> <br/>
+        <input type="hidden" name="membershipstatus" value="1" />
+        <input type="hidden" name="adminaccess" value="0" />
+        <button type="submit" class="btn btn-primary">Add</button>
+        <a href="/admin?adminid={{adminrecord[0]}}" class="btn btn-primary" role="button" aria-pressed="true">Cancel</a>
+      </form>
+
+</body>
+</html>

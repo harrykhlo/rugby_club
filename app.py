@@ -279,3 +279,67 @@ def adminmemberupdate():
         memberrecord = cur.fetchall()[0]
 
         return render_template('adminmemberupdate.html', memberdetails=memberrecord, adminid=adminid)
+
+
+@app.route("/admin/member/add", methods=['GET', 'POST'])
+def adminmemberadd():
+    if request.method == "POST":
+        adminid = request.form.get('adminid')
+        memberid = request.form.get('memberid')
+
+        clubid = request.form.get('clubid')
+        teamid = request.form.get('teamid')
+
+        firstname = request.form.get('firstname')
+        lastname = request.form.get('lastname')
+
+        address1 = request.form.get('address1')
+        address2 = request.form.get('address2')
+
+        city = request.form.get('city')
+        email = request.form.get('email')
+
+        phone = request.form.get('phone')
+        birthdate = request.form.get('birthdate')
+
+        membershipstatus = request.form.get('membershipstatus')
+        adminaccess = request.form.get('adminaccess')
+
+        print("Testing admin edits member value -------------------------------")
+        print(adminid)
+        print(memberid)
+
+        print(clubid)
+        print(teamid)
+
+        print(firstname)
+        print(lastname)
+        print(address1)
+        print(address2)
+        print(city)
+        print(email)
+        print(phone)
+        print(birthdate)
+        print(membershipstatus)
+        print(adminaccess)
+
+        cur = getCursor()
+        cur.execute(
+            "INSERT INTO members VALUES (null, %s, null, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s); ",
+            (clubid, firstname, lastname, address1, address2, city, email, phone, birthdate,
+             membershipstatus, adminaccess,))
+
+        return(redirect(f"/admin?adminid={adminid}"))
+    else:
+        adminid = request.args.get("adminid")
+        cur = getCursor()
+        cur.execute(
+            "select * from members where MemberID = %s;", (adminid,))
+        adminrecord = cur.fetchall()[0]
+        print(adminrecord)
+        cur.execute(
+            "select ClubID, ClubName from clubs where ClubID = %s;", (adminrecord[1],))
+        clubidname = cur.fetchall()[0]
+        print(clubidname)
+        # return render_template('adminmemberadd.html', memberdetails=memberrecord, adminid=adminid)
+        return render_template('adminmemberadd.html', adminrecord=adminrecord, clubidname=clubidname)
