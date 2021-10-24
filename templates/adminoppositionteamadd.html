@@ -22,18 +22,30 @@
                 <label for="teamname">Team Name</label>
             </div>
 
-
-            <!-- <label for="teamname">Team Name:</label>
-            <input type="text" id="teamname" name="teamname" required /> <br/> -->
-            <label for="gradeid" class="col-sm-2 col-form-label">Team Grade</label>
-            <div class="col-sm-5">
-                <select name = "gradeid" class="form-select" aria-label="Default select example" id="gradeid">
-                    <option value="/admin/oppositionteam/add?adminid={{adminid}}&clubid={{clubid}}" selected>Please select team grade</option>
-                    {% for grade in graderecord %}
-                        <option value="{{grade[0]}}">{{grade[1]}} fr. {{grade[2]}} to {{grade[2]}} years old</option>
-                    {% endfor %}
-                </select>
+            <div>
+                <label for="slectedclubid" class="col-sm-2 col-form-label">Club</label>
+                <div class="col-sm-5">
+                    <select name = "slectedclubid" class="form-select" aria-label="Default select example" id="slectedclubid" required>
+                        <option value="/admin/oppositionteam/add?adminid={{adminid}}&clubid={{clubid}}" selected>Please select club</option>
+                        {% for club in clubrecord %}
+                            <option value="{{club[0]}}">{{club[1]}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>            
+            <div>
+                <label for="gradeid" class="col-sm-2 col-form-label">Team Grade</label>
+                <div class="col-sm-5">
+                    <select name = "gradeid" class="form-select" aria-label="Default select example" id="gradeid" required>
+                        <option value="/admin/oppositionteam/add?adminid={{adminid}}&clubid={{clubid}}" selected>Please select team grade</option>
+                        {% for grade in graderecord %}
+                            <option value="{{grade[0]}}">{{grade[1]}} fr. {{grade[2]}} to {{grade[2]}} years old</option>
+                        {% endfor %}
+                    </select>
+                </div>
             </div>
+
+
         </div>
         <button type="submit" class="btn btn-primary">Add Opposition Team</button>
         <a href="/admin?adminid={{adminid}}" class="btn btn-primary" role="button" aria-pressed="true">Cancel</a>

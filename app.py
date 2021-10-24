@@ -425,7 +425,12 @@ def adminclubteamadd():
 @app.route("/admin/oppositionteam/add", methods=['GET', 'POST'])
 def adminoppositionteamadd():
     if request.method == "POST":
-        adminid = 5643
+        adminid = request.form.get("adminid")
+        gradeid = request.form.get("gradeid")
+        slectedclubid = request.form.get("slectedclubid")
+        teamname = request.form.get("teamname")
+
+        # adminid = 5643
         return(redirect(f"/admin?adminid={adminid}"))
     else:
         adminid = request.args.get("adminid")
