@@ -230,3 +230,52 @@ def newsadd():
         clubid = request.args.get("clubid")
         adminid = request.args.get("adminid")
         return render_template('adminnewsadd.html', clubid=clubid, adminid=adminid)
+
+
+@app.route("/admin/member/update", methods=['GET', 'POST'])
+def adminmemberupdate():
+    if request.method == "POST":
+        adminid = request.form.get('adminid')
+        memberid = request.form.get('memberid')
+        firstname = request.form.get('firstname')
+        lastname = request.form.get('lastname')
+        address1 = request.form.get('address1')
+        address2 = request.form.get('address2')
+        city = request.form.get('city')
+        email = request.form.get('email')
+        phone = request.form.get('phone')
+        birthdate = request.form.get('birthdate')
+
+        print("Testing admin edits member value -------------------------------")
+        print(adminid)
+        print(memberid)
+        print(firstname)
+        print(lastname)
+        print(address1)
+        print(address2)
+        print(city)
+        print(email)
+        print(phone)
+        print(birthdate)
+
+        cur = getCursor()
+        cur.execute(
+            "update members set MemberFirstName = %s, MemberLastName = %s, \
+            Address1 = %s, Address2 = %s, \
+            City=%s, Email=%s,  \
+            Phone=%s, Birthdate=%s \
+            where MemberID = %s;",
+            (firstname, lastname, address1, address2, city, email, phone, birthdate, memberid,))
+
+        return(redirect(f"/admin?adminid={adminid}"))
+
+    else:
+        memberid = request.args.get("memberid")
+        adminid = request.args.get("adminid")
+        cur = getCursor()
+
+        cur.execute(
+            "select * from members where MemberID = %s;", (memberid,))
+        memberrecord = cur.fetchall()[0]
+
+        return render_template('adminmemberupdate.html', memberdetails=memberrecord, adminid=adminid)

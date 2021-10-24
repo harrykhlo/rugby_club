@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Admin Updates Member</title>
+</head>
+<body>
+
+    {{memberdetails}}
+    {{adminid}}
+
+    <h1>Admin Updates "{{memberdetails[3]}} {{memberdetails[4]}}" Member Personal Details</h1>
+    <form action="/admin/member/update" method="POST">
+        <input type="hidden" name="memberid" value="{{memberdetails[0]}}" />
+        <input type="hidden" name="adminid" value="{{adminid}}" />
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" name="firstname" value="{{memberdetails[3]}}" /> <br/>
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="lastname" name="lastname" value="{{memberdetails[4]}}" /> <br/>
+        <label for="address1">Address 1:</label>
+        <input type="text" id="address1" name="address1" value="{{memberdetails[5]}}" /> <br/>
+        <label for="address2">Address 2:</label>
+        <input type="text" id="address2" name="address2" value="{{memberdetails[6]}}" /> <br/>
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" value="{{memberdetails[7]}}" /> <br/>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" value="{{memberdetails[8]}}" /> <br/>
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" value="{{memberdetails[9]}}" /> <br/>
+        <label for="birthdate">Birthdate:</label>
+        <input type="text" id="birthdate" name="birthdate" value="{{memberdetails[10]}}" /> <br/>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="/admin?adminid={{adminid}}" class="btn btn-primary" role="button" aria-pressed="true">Cancel</a>
+      </form>
+
+
+
+</body>
+</html>

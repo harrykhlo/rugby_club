@@ -10,11 +10,6 @@
 <body>
     <h1>"{{clubrecord[1]}}" Admin</h1>
     {{adminrecord}}
-
-
-
-
-
     <br/>
     {{clubrecord}}
     <br>
@@ -38,19 +33,19 @@
     <br>
     <h2><u>"{{clubrecord[1]}}" Members</u></h2>
     <a class="btn btn-primary" href="#" role="button">Add Member</a>
-    <a class="btn btn-success" href="#" role="button">Edit Member</a><br/><br/>
     {{memberrecord}}
 
     <table class="table table-hover">
         <thead>
           <tr>
-            <th>First Name</th><th>Last Name</th><th>Address 1</th><th>Address 2</th><th>City</th><th>Email</th><th>Phone</th><th>Birthdate</th>
+            <th>Edit</th><th>First Name</th><th>Last Name</th><th>Address 1</th><th>Address 2</th><th>City</th><th>Email</th><th>Phone</th><th>Birthdate</th>
           </th>
         </thead>
         <tbody>
             {% for member in memberrecord %}
             <tr>
-                <td>{{member[3]}}</td><td>{{member[4]}}</td><td>{{member[5]}}</td><td>{{member[6]}}</td><td>{{member[7]}}</td><td>{{member[8]}}</td><td>{{member[9]}}</td><td>{{member[10]}}</td>
+              <td><a class="btn btn-success" href="/admin/member/update?adminid={{adminrecord[0]}}&memberid={{member[0]}}" role="button">Edit Member</a></td>
+              <td>{{member[3]}}</td><td>{{member[4]}}</td><td>{{member[5]}}</td><td>{{member[6]}}</td><td>{{member[7]}}</td><td>{{member[8]}}</td><td>{{member[9]}}</td><td>{{member[10]}}</td>
             </tr>  
             {% endfor %}
         </tbody>
