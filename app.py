@@ -18,6 +18,7 @@ from flask import request
 from flask import redirect
 from flask import url_for
 from datetime import date
+from datetime import datetime
 import mysql.connector
 import connect
 import uuid
@@ -185,7 +186,7 @@ def admin():
     # print(clubnewsrecord)
 
     cur.execute(
-        "select * from members where ClubID = %s order by MemberFirstName, MemberLastName;", (clubid,))
+        "select * from members join teams on members.TeamID = teams.TeamID where members.ClubID = %s order by MemberFirstName, MemberLastName;", (clubid,))
     memberrecord = cur.fetchall()
     # print(memberrecord)
 
@@ -208,8 +209,8 @@ def admin():
             join teams as ateam on fixtures.AwayTeam = ateam.TeamID \
             order by FixtureDate desc;")
     fixturerecord = cur.fetchall()
-    print("Harry testing -----fixturerecord------------")
-    print(fixturerecord)
+    # print("Harry testing -----fixturerecord------------")
+    # print(fixturerecord)
 
     return render_template('admin.html', adminrecord=adminrecord, clubrecord=clubrecord,
                            clubnewsrecord=clubnewsrecord, memberrecord=memberrecord,
@@ -461,6 +462,49 @@ def adminoppositionteamadd():
         print("")
         print(clubrecord)
         return render_template('adminoppositionteamadd.html', graderecord=graderecord, clubrecord=clubrecord, adminid=adminid, clubid=clubid)
+
+
+@app.route("/admin/memberteam/assign", methods=['GET', 'POST'])
+def adminmemberteamassign():
+    if request.method == "POST":
+        adminid = request.form.get("adminid")
+        memberid = request.form.get("memberid")
+        selectedteamid = request.form.get("selectedteamid")
+        print(adminid)
+        print(memberid)
+        print(selectedteamid)
+        cur = getCursor()
+
+        cur.execute(
+            "update members set TeamID = %s where MemberID = %s;", (selectedteamid, memberid,))
+        # adminid = 5643
+        return (redirect(f"/admin?adminid={adminid}"))
+    else:
+        adminid = request.args.get("adminid")
+        memberid = request.args.get("memberid")
+        cur = getCursor()
+        cur.execute(
+            "select * from members where MemberID = %s;", (memberid,))
+        memberrecord = cur.fetchall()[0]
+        birthdate = memberrecord[10]
+        today = date.today()
+        yearsold = ((today - birthdate).days)/365
+        clubid = memberrecord[1]
+        print(memberrecord)
+        print(birthdate)
+        print(clubid)
+        print(yearsold)
+        print(type(yearsold))
+
+        cur.execute(
+            "select * from teams \
+            join grades on teams.TeamGrade = grades.GradeID \
+            where ClubID = %s and GradeMinimumAge <= %s and GradeMaximumAge >= %s;", (clubid, yearsold, yearsold,))
+        validteamrecord = cur.fetchall()
+
+        print(validteamrecord)
+
+        return render_template('adminmemberteamassign.html', adminid=adminid, memberrecord=memberrecord, validteamrecord=validteamrecord)
 
 
 @app.route("/admin/homefixture/add", methods=['GET', 'POST'])

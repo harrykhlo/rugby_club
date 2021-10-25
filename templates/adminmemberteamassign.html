@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Admin Assigns Member Team</title>
+</head>
+<body>
+    <h1>Admin Assigns Member '{{memberrecord[3]}} {{memberrecord[4]}}' to a Team</h1>
+    {{adminid}}
+    {{memberrecord}} 
+    {{validteamrecord}}
+
+    <form action="/admin/memberteam/assign" method="POST">
+        <input type="hidden" name="adminid" value="{{adminid}}" />
+        <input type="hidden" name="memberid" value="{{memberrecord[0]}}" />
+        <div class="row mb-3">
+          <label for="selectedteamid" class="col-sm-2 col-form-label">User Name</label>
+          <div class="col-sm-5">
+            <select name = "selectedteamid" class="form-select" aria-label="Default select example" id="selectedteamid">
+                <option value="#" selected>Please select your name</option>
+                {% for team in validteamrecord %}
+                <option value={{team[0]}}>{{team[2]}}</option>
+                {% endfor %}
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Assign</button>
+        <a href="/admin?adminid={{adminid}}" class="btn btn-primary" role="button" aria-pressed="true">Cancel</a>
+        <!-- <input type="submit"/> -->
+      </form>
+
+</body>
+</html>
