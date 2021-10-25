@@ -507,6 +507,26 @@ def adminmemberteamassign():
         return render_template('adminmemberteamassign.html', adminid=adminid, memberrecord=memberrecord, validteamrecord=validteamrecord)
 
 
+@app.route("/admin/activemember/print", methods=['GET', 'POST'])
+def adminactivememberprint():
+    if request.method == "POST":
+        adminid = 5643
+        return(redirect(f"/admin?adminid={adminid}"))
+    else:
+        adminid = request.args.get("adminid")
+        clubid = request.args.get("clubid")
+
+        cur = getCursor()
+        cur.execute(
+            "select ClubName from clubs where ClubID = %s;", (clubid,))
+        clubname = cur.fetchall()[0][0]
+
+        cur.execute(
+            "select * from members join teams on members.TeamID = teams.TeamID where members.ClubID = %s order by MemberFirstName, MemberLastName;", (clubid,))
+        memberrecord = cur.fetchall()
+        return render_template('adminactivememberprint.html', adminid=adminid, memberrecord=memberrecord, clubname=clubname)
+
+
 @app.route("/admin/homefixture/add", methods=['GET', 'POST'])
 def adminhomefixtureadd():
     if request.method == "POST":

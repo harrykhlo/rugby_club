@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Admin Prints Active Member</title>
+</head>
+<body>
+    <h1>All Active Members of '{{clubname}}'</h1>
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>First Name</th><th>Last Name</th><th>Team Name</th><th>Address 1</th><th>Address 2</th><th>City</th><th>Email</th><th>Phone</th><th>Birthdate</th>
+          </th>
+        </thead>
+        <tbody>
+            {% for member in memberrecord %}
+            <tr>
+              
+              
+              <td>{{member[3]}}</td><td>{{member[4]}}</td><td>{{member[15]}}</td><td>{{member[5]}}</td><td>{{member[6]}}</td><td>{{member[7]}}</td><td>{{member[8]}}</td><td>{{member[9]}}</td><td>{{member[10]}}</td>
+            </tr>  
+            {% endfor %}
+        </tbody>
+    </table>    
+
+
+
+</body>
+</html>
