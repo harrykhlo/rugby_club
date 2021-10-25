@@ -68,12 +68,14 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>Team Name</th><th>Grade</th><th>Club Name</th>
+          <th>Create Home Fixutre</th><th>Create Away Fixture</th><th>Team Name</th><th>Grade</th><th>Club Name</th>
         </th>
       </thead>
       <tbody>
           {% for team in teamrecord %}
           <tr>
+              <td> <a class="btn btn-primary" href="/admin/awayteam/set?adminid={{adminrecord[0]}}&teamid={{team[0]}}" role="button">Set Away Team</a></td>
+              <td> <a class="btn btn-primary" href="/admin/hometeam/set?adminid={{adminrecord[0]}}&teamid={{team[0]}}" role="button">Set Home Team</a></td>
               <td>{{team[2]}}</td><td>{{team[5]}}</td><td>{{team[9]}}</td>
           </tr>  
           {% endfor %}
@@ -102,9 +104,6 @@
 
     <br>
     <h2><u>All Fixtures</u></h2>
-    <a class="btn btn-primary" href="/admin/homefixture/add" role="button">Create Home Fixture</a><br/><br/>
-    <a class="btn btn-primary" href="#" role="button">Create Away Fixture</a><br/><br/>
-    
     <table class="table table-hover">
       <thead>
         <tr>

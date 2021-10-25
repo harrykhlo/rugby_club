@@ -527,11 +527,79 @@ def adminactivememberprint():
         return render_template('adminactivememberprint.html', adminid=adminid, memberrecord=memberrecord, clubname=clubname)
 
 
-@app.route("/admin/homefixture/add", methods=['GET', 'POST'])
-def adminhomefixtureadd():
+@app.route("/admin/awayteam/set", methods=['GET', 'POST'])
+def adminawayteamset():
     if request.method == "POST":
-        adminid = 5643
+        adminid = request.form.get("adminid")
+        teamid = request.form.get("teamid")
+        datetime = request.form.get("datetime")
+        selectedteamid = request.form.get("selectedteamid")
+        print("Harry test -post-admin/awayteam/set--------------------")
+
+        print(adminid)
+        print(teamid)
+        print(datetime)
+        print(selectedteamid)
+        cur = getCursor()
+        cur.execute(
+            "insert into fixtures values (null, %s, %s, %s, null, null);", (datetime, teamid, selectedteamid,))
+
+        # adminid = 5643
         return(redirect(f"/admin?adminid={adminid}"))
     else:
+        adminid = request.args.get("adminid")
+        teamid = request.args.get("teamid")
 
-        return render_template('adminhomefixtureadd.html')
+        print("Harry test ----------------------")
+        print(adminid)
+        print(teamid)
+        cur = getCursor()
+        cur.execute(
+            "select TeamName from teams where TeamID = %s;", (teamid,))
+        teamname = cur.fetchall()[0][0]
+
+        cur.execute(
+            "select * from teams where \
+            TeamGrade = (select TeamGrade from teams where TeamID = %s) and \
+            ClubID <>(select ClubID from teams where TeamID = %s);", (teamid, teamid,))
+        teamrecord = cur.fetchall()
+
+        return render_template('adminawayteamset.html', adminid=adminid, teamrecord=teamrecord, teamname=teamname, teamid=teamid)
+
+
+@app.route("/admin/hometeam/set", methods=['GET', 'POST'])
+def adminhometeamset():
+    if request.method == "POST":
+        adminid = request.form.get("adminid")
+        teamid = request.form.get("teamid")
+        datetime = request.form.get("datetime")
+        selectedteamid = request.form.get("selectedteamid")
+        print("Harry test -post-admin/hometeam/set--------------------")
+
+        print(adminid)
+        print(teamid)
+        print(datetime)
+        print(selectedteamid)
+        cur = getCursor()
+        cur.execute(
+            "insert into fixtures values (null, %s, %s, %s, null, null);", (datetime, selectedteamid, teamid,))
+        return(redirect(f"/admin?adminid={adminid}"))
+    else:
+        adminid = request.args.get("adminid")
+        teamid = request.args.get("teamid")
+
+        print("Harry test ----------------------")
+        print(adminid)
+        print(teamid)
+        cur = getCursor()
+        cur.execute(
+            "select TeamName from teams where TeamID = %s;", (teamid,))
+        teamname = cur.fetchall()[0][0]
+
+        cur.execute(
+            "select * from teams where \
+            TeamGrade = (select TeamGrade from teams where TeamID = %s) and \
+            ClubID <>(select ClubID from teams where TeamID = %s);", (teamid, teamid,))
+        teamrecord = cur.fetchall()
+
+        return render_template('adminhometeamset.html', adminid=adminid, teamrecord=teamrecord, teamname=teamname, teamid=teamid)
