@@ -206,14 +206,15 @@ def admin():
         "select * from fixtures \
             join teams as hteam on fixtures.HomeTeam = hteam.TeamID \
             join teams as ateam on fixtures.AwayTeam = ateam.TeamID \
-            order by FixtureDate;")
+            order by FixtureDate desc;")
     fixturerecord = cur.fetchall()
     print("Harry testing -----fixturerecord------------")
     print(fixturerecord)
 
     return render_template('admin.html', adminrecord=adminrecord, clubrecord=clubrecord,
                            clubnewsrecord=clubnewsrecord, memberrecord=memberrecord,
-                           teamrecord=teamrecord, otherteamrecord=otherteamrecord)
+                           teamrecord=teamrecord, otherteamrecord=otherteamrecord,
+                           fixturerecord=fixturerecord)
 
 
 @app.route("/admin/news/add", methods=['GET', 'POST'])
@@ -460,3 +461,13 @@ def adminoppositionteamadd():
         print("")
         print(clubrecord)
         return render_template('adminoppositionteamadd.html', graderecord=graderecord, clubrecord=clubrecord, adminid=adminid, clubid=clubid)
+
+
+@app.route("/admin/homefixture/add", methods=['GET', 'POST'])
+def adminhomefixtureadd():
+    if request.method == "POST":
+        adminid = 5643
+        return(redirect(f"/admin?adminid={adminid}"))
+    else:
+
+        return render_template('adminhomefixtureadd.html')
