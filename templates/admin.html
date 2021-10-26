@@ -34,6 +34,14 @@
     <h2><u>"{{clubrecord[1]}}" Members</u></h2>
     <a class="btn btn-primary" href="/admin/member/add?adminid={{adminrecord[0]}}" role="button">Add New Member</a>
     <a class="btn btn-primary" href="/admin/activemember/print?adminid={{adminrecord[0]}}&clubid={{adminrecord[1]}}" role="button"  target="_blank">Print All Active Member</a>
+
+    <form action="/admin/eligibilityreport/print" method="POST" target="_blank">
+      <input type="hidden" name="clubid" value="{{adminrecord[1]}}" />
+      <label for="dateeligibility">Date for Eligibility Report (YYYY-MM-DD):</label>
+      <input type="text" id="dateeligibility" name="dateeligibility" value={{today}} />
+      <button type="submit" class="btn btn-primary">Eligibility Report</button>
+      <!-- <a class="btn btn-primary" href="/admin/eligibilityreport/print?adminid={{adminrecord[0]}}&clubid={{adminrecord[1]}}" role="button"  target="_blank">Eligibility Report</a> -->
+    </form>
     <!-- {{memberrecord}} -->
 
     <table class="table table-hover">
@@ -74,8 +82,8 @@
       <tbody>
           {% for team in teamrecord %}
           <tr>
-              <td> <a class="btn btn-primary" href="/admin/awayteam/set?adminid={{adminrecord[0]}}&teamid={{team[0]}}" role="button">Set Away Team</a></td>
-              <td> <a class="btn btn-primary" href="/admin/hometeam/set?adminid={{adminrecord[0]}}&teamid={{team[0]}}" role="button">Set Home Team</a></td>
+              <td> <a class="btn btn-success" href="/admin/awayteam/set?adminid={{adminrecord[0]}}&teamid={{team[0]}}" role="button">Set Away Team</a></td>
+              <td> <a class="btn btn-success" href="/admin/hometeam/set?adminid={{adminrecord[0]}}&teamid={{team[0]}}" role="button">Set Home Team</a></td>
               <td>{{team[2]}}</td><td>{{team[5]}}</td><td>{{team[9]}}</td>
           </tr>  
           {% endfor %}

@@ -168,6 +168,7 @@ def admin():
     adminid = request.args.get("adminid")
     # print("adminid------Testing---------")
     # print(adminid)
+    today = date.today()
     cur = getCursor()
     cur.execute(
         "select * from members where MemberID = %s;", (adminid,))
@@ -215,7 +216,7 @@ def admin():
     return render_template('admin.html', adminrecord=adminrecord, clubrecord=clubrecord,
                            clubnewsrecord=clubnewsrecord, memberrecord=memberrecord,
                            teamrecord=teamrecord, otherteamrecord=otherteamrecord,
-                           fixturerecord=fixturerecord)
+                           fixturerecord=fixturerecord, today=today)
 
 
 @app.route("/admin/news/add", methods=['GET', 'POST'])
@@ -603,3 +604,42 @@ def adminhometeamset():
         teamrecord = cur.fetchall()
 
         return render_template('adminhometeamset.html', adminid=adminid, teamrecord=teamrecord, teamname=teamname, teamid=teamid)
+
+
+@app.route("/admin/eligibilityreport/print", methods=['GET', 'POST'])
+def admineligibilityreportprint():
+    if request.method == "POST":
+
+        clubid = request.form.get("clubid")
+        dateeligibility = request.form.get("dateeligibility")
+        print("--/admin/eligibilityreport/print------")
+        print(clubid)
+        print(dateeligibility)
+
+        cur = getCursor()
+        cur.execute(
+            "select ClubName from clubs where ClubID = %s;", (clubid,))
+        clubname = cur.fetchall()[0][0]
+
+        cur.execute(
+            "select * from members \
+            join grades on DATEDIFF(%s, members.Birthdate)/365 \
+            between grades.GradeMinimumAge and grades.GradeMaximumAge \
+            where ClubID = %s and MembershipStatus = 1 order by GradeMinimumAge;", (dateeligibility, clubid,))
+        eligibilityrecord = cur.fetchall()
+        print(eligibilityrecord)
+        return render_template('admineligibilityreportprint.html', eligibilityrecord=eligibilityrecord, clubname=clubname, dateeligibility=dateeligibility)
+        # return(redirect(f"/admin?adminid={adminid}"))
+    else:
+        adminid = request.args.get("adminid")
+        clubid = request.args.get("clubid")
+
+        # cur = getCursor()
+        # cur.execute(
+        #     "select ClubName from clubs where ClubID = %s;", (clubid,))
+        # clubname = cur.fetchall()[0][0]
+
+        # cur.execute(
+        #     "select * from members join teams on members.TeamID = teams.TeamID where members.ClubID = %s order by MemberFirstName, MemberLastName;", (clubid,))
+        # memberrecord = cur.fetchall()
+        return render_template('admineligibilityreportprint.html', adminid=adminid)
