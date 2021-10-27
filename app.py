@@ -192,7 +192,7 @@ def newsadd():
         news = request.form.get('news')
         cur = getCursor()
         cur.execute(
-            "insert into ClubNews values (null, %s, %s, %s,  %s, %s);",
+            "insert into clubnews values (null, %s, %s, %s,  %s, %s);",
             (clubid, newsheader, newsbyline, newsdate, news,))
         return (redirect(f"/admin?adminid={adminid}"))
     else:
