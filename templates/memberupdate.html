@@ -9,9 +9,6 @@
 </head>
 <body>
     <h1>Update "{{memberdetails[3]}} {{memberdetails[4]}}" Member Personal Details</h1>
-    {{memberdetails}}
-
-
     <form action="/member/update" method="POST">
         <input type="hidden" name="memberid" value="{{memberdetails[0]}}" />
         <label for="firstname">First Name:</label>
@@ -34,7 +31,5 @@
         <!-- <input type="submit"/> -->
         <a href="/member?memberid={{memberdetails[0]}}" class="btn btn-primary" role="button" aria-pressed="true">Cancel</a>
       </form>
-
-
 </body>
 </html>

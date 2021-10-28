@@ -8,10 +8,6 @@
     <title>Admin Updates Member</title>
 </head>
 <body>
-
-    {{memberdetails}}
-    {{adminid}}
-
     <h1>Admin Updates "{{memberdetails[3]}} {{memberdetails[4]}}" Member Personal Details</h1>
     <form action="/admin/member/update" method="POST">
         <input type="hidden" name="memberid" value="{{memberdetails[0]}}" />
@@ -35,8 +31,5 @@
         <button type="submit" class="btn btn-primary">Update</button>
         <a href="/admin?adminid={{adminid}}" class="btn btn-primary" role="button" aria-pressed="true">Cancel</a>
       </form>
-
-
-
 </body>
 </html>

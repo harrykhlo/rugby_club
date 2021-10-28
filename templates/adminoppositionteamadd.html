@@ -9,19 +9,13 @@
 </head>
 <body>
     <h1>Admin Adds Opposition Team</h1>
-    {{adminid}}
-    {{graderecord}}
-    {{clubrecord}}
     <form action="/admin/oppositionteam/add" method="POST">
         <div class="row mb-3">
             <input type="hidden" name="adminid" value="{{adminid}}" />
-            
-
             <div class="form-floating">
                 <textarea class="form-control" placeholder="News Header" id="teamname" name="teamname" required></textarea>
                 <label for="teamname">Team Name</label>
             </div>
-
             <div>
                 <label for="slectedclubid" class="col-sm-2 col-form-label">Club</label>
                 <div class="col-sm-5">
@@ -44,12 +38,9 @@
                     </select>
                 </div>
             </div>
-
-
         </div>
         <button type="submit" class="btn btn-primary">Add Opposition Team</button>
         <a href="/admin?adminid={{adminid}}" class="btn btn-primary" role="button" aria-pressed="true">Cancel</a>
-
-    
+    </form>
 </body>
 </html>

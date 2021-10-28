@@ -9,14 +9,10 @@
 </head>
 <body>
     <h1>Admin Adds New Member to "{{clubidname[1]}}"</h1>
-    {{clubidname}}
-    {{adminrecord}}
-
     <form action="/admin/member/add" method="POST">
         <input type="hidden" name="adminid" value="{{adminrecord[0]}}" />
         <input type="hidden" name="memberid" value="null" />
         <input type="hidden" name="clubid" value="{{adminrecord[1]}}" />
-        
         <label for="firstname">First Name:</label>
         <input type="text" id="firstname" name="firstname" required /> <br/>
         <label for="lastname">Last Name:</label>
@@ -33,7 +29,6 @@
         <input type="text" id="phone" name="phone" /> <br/>
         <label for="birthdate">Birthdate (yyyy-mm-dd):</label>
         <input type="text" id="birthdate" name="birthdate" required /> <br/>
-
         <label for="teamid" class="col-sm-2 col-form-label">Team:</label>
         <div class="col-sm-5">
           <select name = "teamid" class="form-select" aria-label="Default select example" id="teamid" required>
@@ -48,6 +43,5 @@
         <button type="submit" class="btn btn-primary">Add</button>
         <a href="/admin?adminid={{adminrecord[0]}}" class="btn btn-primary" role="button" aria-pressed="true">Cancel</a>
       </form>
-
 </body>
 </html>

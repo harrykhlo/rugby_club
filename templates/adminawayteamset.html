@@ -9,22 +9,13 @@
 </head>
 <body>
     <h1>Admin Sets Away Team vs. {{teamname}}</h1>
-
-    {{adminid}}
-    {{teamrecord}}
-    {{teamid}}
-
-
     <form action="/admin/awayteam/set" method="POST">
         <input type="hidden" name="adminid" value="{{adminid}}" />
         <input type="hidden" name="teamid" value="{{teamid}}" />
-
         <div class="form-floating">
             <textarea class="form-control" placeholder="Date Time (yyyy-mm-dd hh:mm:ss)" id="datetime" name="datetime" required></textarea>
             <label for="datetime">Date Time (yyyy-mm-dd hh:mm:ss)</label>
         </div>
-        
-
         <div class="row mb-3">
           <label for="selectedteamid" class="col-sm-2 col-form-label">Away Team</label>
           <div class="col-sm-5">
@@ -38,7 +29,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Create Home Fixture</button>
         <a href="/admin?adminid={{adminid}}" class="btn btn-primary" role="button" aria-pressed="true">Cancel</a>
-        
       </form>
 </body>
 </html>

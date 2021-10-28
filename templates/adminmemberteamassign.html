@@ -9,10 +9,6 @@
 </head>
 <body>
     <h1>Admin Assigns Member '{{memberrecord[3]}} {{memberrecord[4]}}' to a Team</h1>
-    {{adminid}}
-    {{memberrecord}} 
-    {{validteamrecord}}
-
     <form action="/admin/memberteam/assign" method="POST">
         <input type="hidden" name="adminid" value="{{adminid}}" />
         <input type="hidden" name="memberid" value="{{memberrecord[0]}}" />
@@ -31,6 +27,5 @@
         <a href="/admin?adminid={{adminid}}" class="btn btn-primary" role="button" aria-pressed="true">Cancel</a>
         <!-- <input type="submit"/> -->
       </form>
-
 </body>
 </html>
