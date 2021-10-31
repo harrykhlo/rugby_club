@@ -39,7 +39,7 @@ This page is brought after a member logged in.
   - User's personal details.
 
 - Route of Member Page
-  The member page is at /member of the site.
+  The member page is at /member?memberid=`<member id>` of the site. The member id from the login page is required to be given in the form of a GET request.
 
 ## Member Update Personal Detail Page (is entered from member page)
 
@@ -58,7 +58,7 @@ This page is brought by a button click on member page.
   - Birthday.
 
 - Route of Member Update Personal Detail Page
-  The member page is at /member/update of the site.
+  The member page is at /member/update?memberid=`<member id>` of the site. The member id from the member page is required to be given in the form of a GET request.
 
 ## Admin page
 
@@ -86,11 +86,29 @@ This page is brought after an admin logged in.
   - Create either home or away fixtures with a team belonging to admin's club and another team in the same grade; and
   - Give a list of all active members eligible to play in a specific grade on a given date.
 
+- Route of Admin Page
+  The admin page is at /admin?adminid=`<admin id>` of the site. The admin id from the login page is required to be given in the form of a GET request.
+
 ## Add News Page (is entered from admin page)
 
 This page is brought by a button click on admin page.
 
 - Functions of Add News Page
+  This Add News Page allows the admin to added a new news. The following information should be included in a news:
+
+  - News Header;
+  - News Byline;
+  - News Date (yyyy-mm-dd); and
+  - News Content.
+
+- Route of Member Update Personal Detail Page
+  The admin page is at /admin/news/add?clubid=`<club id>`&adminid=`<admin id>` of the site. The club id and the admin id from the admin page are required to be given in the form of a GET request.
+
+## Add New Member (is entered from admin page)
+
+This page is brought by a button click on admin page.
+
+- Functions of Add New Member Page
   This Add News Page allows the admin to added a new news. The following information should be included in a news:
 
   - News Header;
