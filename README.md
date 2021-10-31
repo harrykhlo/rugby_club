@@ -4,6 +4,14 @@
 
 This is an application for rugby clubs and their members managing their game activities which includes membership, team, game, club managements. The application pages and functions are given in the following sections.
 
+## Design
+
+This application consists of three pages which are login, member and admin. The login page is the entry point of the application for both admins and members. A user selects their name and login into their own page. The system can distinguish between members and admins, bringing the users to a right page according to their identity after login. The member and admin pages show corresponding user information and provide corresponding functions according to their identity. The functions are given via a button click on the pages accordingly.
+
+## Assumptions
+
+This application assumes user always enter the date in yyyy-mm-dd format, and time in hh:mm:ss format.
+
 ## Login Page
 
 - Functions of Login Page
@@ -18,7 +26,11 @@ This is an application for rugby clubs and their members managing their game act
 ## Member page
 
 - Functions of Member Page
-  This member page is shown after a general user gets into the system via the login page. The users can update their personal details on this page. They can also find the following information on the page:
+  This member page is shown after a general user gets into the system via the login page. The users can:
+
+  - Update their personal details vai a button click bringing the user to a Member Update Personal Detail Page as mentioned in next Section below for entering new details.
+
+  They can also find the following information on the page:
 
   - Latest 3 club news belong to user's club;
   - Upcoming games for user's team; and
