@@ -99,4 +99,4 @@ This page is brought by a button click on admin page.
   - News Content.
 
 - Route of Member Update Personal Detail Page
-  The admin page is at /admin/news/add?clubid=<<club id>>&adminid=<<admin id>> of the site. A club id and an admin id are required to be given in the form of a GET request.
+  The admin page is at /admin/news/add?clubid=`<club id>`&adminid=`<admin id>` of the site. A club id and an admin id are required to be given in the form of a GET request.
