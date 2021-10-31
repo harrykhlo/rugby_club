@@ -25,6 +25,8 @@ This application assumes user always enter the date in yyyy-mm-dd format, and ti
 
 ## Member page
 
+This page is brought after a member logged in.
+
 - Functions of Member Page
   This member page is shown after a general user gets into the system via the login page. The users can:
 
@@ -39,7 +41,9 @@ This application assumes user always enter the date in yyyy-mm-dd format, and ti
 - Route of Member Page
   The member page is at /member of the site.
 
-## Member Update Personal Detail Page
+## Member Update Personal Detail Page (is entered from member page)
+
+This page is brought by a button click on member page.
 
 - Functions of Member Update Personal Detail Page
   This member update personal detail page is shown after the user click the “Update Personal Detail” button on the member page. The following details can be updated.
@@ -57,6 +61,8 @@ This application assumes user always enter the date in yyyy-mm-dd format, and ti
   The member page is at /member/update of the site.
 
 ## Admin page
+
+This page is brought after an admin logged in.
 
 - Functions of Admin Page
   This Admin page is shown after an admin user gets into the system via the login page. The admin can find the following information on the page:
@@ -79,3 +85,18 @@ This application assumes user always enter the date in yyyy-mm-dd format, and ti
   - Add new opposition teams with details belonging to other clubs;
   - Create either home or away fixtures with a team belonging to admin's club and another team in the same grade; and
   - Give a list of all active members eligible to play in a specific grade on a given date.
+
+## Add News Page (is entered from admin page)
+
+This page is brought by a button click on admin page.
+
+- Functions of Add News Page
+  This Add News Page allows the admin to added a new news. The following information should be included in a news:
+
+  - News Header;
+  - News Byline;
+  - News Date (yyyy-mm-dd); and
+  - News Content.
+
+- Route of Member Update Personal Detail Page
+  The admin page is at /admin/news/add?clubid=<<club id>>&adminid=<<admin id>> of the site. A club id and an admin id are required to be given in the form of a GET request.
