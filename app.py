@@ -41,7 +41,12 @@ def getCursor():
         dbconn = connection.cursor()
         return dbconn
     else:
-        return dbconn
+        if connection.is_connected():
+            return dbconn
+        else:
+            connection = None
+            dbconn = None
+            return getCursor()
 
 
 # route of login page
