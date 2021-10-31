@@ -104,17 +104,22 @@ This page is brought by a button click on admin page.
 - Route of Member Update Personal Detail Page
   The admin page is at /admin/news/add?clubid=`<club id>`&adminid=`<admin id>` of the site. The club id and the admin id from the admin page are required to be given in the form of a GET request.
 
-## Add New Member (is entered from admin page)
+## Add New Member Page (is entered from admin page)
 
 This page is brought by a button click on admin page.
 
 - Functions of Add New Member Page
-  This Add News Page allows the admin to added a new news. The following information should be included in a news:
+  This Add New Member allows the admin to added a new member in the admin's club. The following information should be included in a new member:
 
-  - News Header;
-  - News Byline;
-  - News Date (yyyy-mm-dd); and
-  - News Content.
+  - First Name;
+  - Last Name;
+  - Address 1;
+  - Address 2;
+  - City;
+  - Email;
+  - Phone;
+  - Birthday; and
+  - Team.
 
-- Route of Member Update Personal Detail Page
-  The admin page is at /admin/news/add?clubid=`<club id>`&adminid=`<admin id>` of the site. A club id and an admin id are required to be given in the form of a GET request.
+- Route of Add New Member Page
+  The admin page is at admin/member/add?adminid=`<admin id>` of the site. The admin id from admin page is required to be given in the form of a GET request.
