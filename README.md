@@ -26,7 +26,7 @@ This application consists of three pages which are login, member and admin. The 
 
 ## Member page
 
-This page is brought after a member logged in.
+This page is brought after a member logged in via the login page.
 
 - Functions of Member Page
   This member page is shown after a general user gets into the system via the login page. The users can:
@@ -44,7 +44,7 @@ This page is brought after a member logged in.
 
 ## Member Update Personal Detail Page (is entered from member page)
 
-This page is brought by a button click on member page.
+This page is brought by a button click on the member page. The button is above the list of club news on the member page.
 
 - Functions of Member Update Personal Detail Page
   This member update personal detail page is shown after the user click the “Update Personal Detail” button on the member page. The following details can be updated.
@@ -63,7 +63,7 @@ This page is brought by a button click on member page.
 
 ## Admin page
 
-This page is brought after an admin logged in.
+This page is brought after an admin logged in via the login page.
 
 - Functions of Admin Page
   This Admin page is shown after an admin user gets into the system via the login page. The admin can find the following information on the page:
@@ -92,7 +92,7 @@ This page is brought after an admin logged in.
 
 ## Add News Page (is entered from admin page)
 
-This page is brought by a button click on admin page.
+This page is brought by a button click on the admin page. The button is at the top of the club news list on the admin page.
 
 - Functions of Add News Page
   This Add News Page allows the admin to added a new news. The following information should be included in a news:
@@ -107,7 +107,7 @@ This page is brought by a button click on admin page.
 
 ## Add New Member Page (is entered from admin page)
 
-This page is brought by a button click on admin page.
+This page is brought by a button click on the admin page. The button is at the top of the member list on the admin page.
 
 - Functions of Add New Member Page
   This Add New Member allows the admin to added a new member in the admin's club. The following information should be included in a new member:
