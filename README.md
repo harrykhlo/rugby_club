@@ -272,3 +272,19 @@ This page is brought by a button click on the admin page. The button is at the s
 - Route of Set Home Team Page
 
   The Set Home Team Page is at /admin/hometeam/set?adminid=`<admin id>`&teamid=`<away team id>` of the site. The admin id and away team id from admin page and the row of the team list respectively are required to be given in the form of a GET request.
+
+  ## Add New Opposition Team Page (is entered from admin page)
+
+This page is brought by a button click on the admin page. The button is at the top of the other opposition team list on the admin page.
+
+- Functions of Add New Opposition Team Page
+
+  This Add New Opposition Team Page allows the admin to added a new opposition team in the other clubs different from the admin's club. The following information should be included in a new opposition team:
+
+  - Team Name;
+  - Club selected from a drop-down list; and
+  - Team Grade selected from a drop-down list.
+
+- Route of Add New Opposition Team Page
+
+  The Add New Club Team Page is at /admin/oppositionteam/add?adminid=`<admin id>`&clubid=`<club id>` of the site. The admin id and club id from the admin page are required to be given in the form of a GET request.
