@@ -182,4 +182,16 @@ This page is brought by a button click on the admin page. The button is at the f
   - Birthday.
 
 - Route of Edit Member Page
-  The member page is at /admin/member/update?adminid=`<admin id>`&memberid=`<member id>` of the site. The admin id and member id from the admin page and the row of the member list respectively are required to be given in the form of a GET request.
+  The Edit member page is at /admin/member/update?adminid=`<admin id>`&memberid=`<member id>` of the site. The admin id and member id from the admin page and the row of the member list respectively are required to be given in the form of a GET request.
+
+## Assign Team Page (is entered from admin page)
+
+This page is brought by a button click on the admin page. The button is at the second column of the member list on the admin page.
+
+- Functions of Assign Team Page
+  This Assign Team Page allows admin to assign a team to the member belonging to the admin's club. The following details can be updated.
+
+  The team belonging to the admin's club and matching with the member grade will be shown in a drop-down list on the page for the Admin's assignment.
+
+- Route of Assign Team Page
+  The Assign Team Page is at /admin/memberteam/assign?adminid=`<admin id>`&memberid=5691`<member id>` of the site. The admin id and member id from the admin page and the row of the member list respectively are required to be given in the form of a GET request.
