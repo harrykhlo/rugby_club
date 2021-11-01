@@ -196,7 +196,7 @@ This page is brought by a button click on the admin page. The button is at the s
 - Route of Assign Team Page
   The Assign Team Page is at /admin/memberteam/assign?adminid=`<admin id>`&memberid=5691`<member id>` of the site. The admin id and member id from the admin page and the row of the member list respectively are required to be given in the form of a GET request.
 
-## Toggle Active / Inactive Page (are entered from admin page)
+## Toggle Active / Inactive Page (is entered from admin page)
 
 This page is brought by a toggle button click on the admin page. The button is at the third column of the member list on the admin page.
 
