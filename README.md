@@ -12,6 +12,9 @@ This application consists of three pages which are login, member and admin. The 
 
 - This application assumes user always enter the date in yyyy-mm-dd format, and time in hh:mm:ss format.
 - The Admin is responsible for making sure the grade of team is correct when a new member is added by the Admin. The system does not check the grade when the member record is initially created.
+- The correct input data are assumed to be given by all the users.
+- No security issue is considered in this application.
+- Printing capability is provided by the user's browser.
 
 ## Login Page
 
