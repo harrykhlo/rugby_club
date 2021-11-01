@@ -106,7 +106,7 @@ This page is brought by a button click on the admin page. The button is at the t
   - News Content.
 
 - Route of Member Update Personal Detail Page
-  The admin page is at /admin/news/add?clubid=`<club id>`&adminid=`<admin id>` of the site. The club id and the admin id from the admin page are required to be given in the form of a GET request.
+  The Member Update Personal Detail page is at /admin/news/add?clubid=`<club id>`&adminid=`<admin id>` of the site. The club id and the admin id from the admin page are required to be given in the form of a GET request.
 
 ## Add New Member Page (is entered from admin page)
 
@@ -126,4 +126,24 @@ This page is brought by a button click on the admin page. The button is at the t
   - Team.
 
 - Route of Add New Member Page
-  The admin page is at admin/member/add?adminid=`<admin id>` of the site. The admin id from admin page is required to be given in the form of a GET request.
+  The Add New Member page is at admin/member/add?adminid=`<admin id>` of the site. The admin id from admin page is required to be given in the form of a GET request.
+
+## Print All Active Club Member Page (is entered from admin page)
+
+This page is brought by a button click on the admin page. The button is at the top of the member list on the admin page.
+
+- Functions of Print All Active Club Member Page
+  This Print All Active Club Member Page is given in a new tab showing a list of all active members belonging to the admin's club for printing purposes. The users can use the brower's printing capability to print the list of all active club members. The following member information is included on the list:
+
+  - First Name;
+  - Last Name;
+  - Team name;
+  - Address 1;
+  - Address 2;
+  - City;
+  - Email;
+  - Phone; and
+  - Birthday.
+
+- Route of Print All Active Club Member Page
+  The Print All Active Club Member Page is at /admin/activemember/print?adminid=`<admin id>`&clubid=`<club id>` of the site. The admin id and club id from admin page are required to be given in the form of a GET request.
