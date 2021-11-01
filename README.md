@@ -202,8 +202,8 @@ This page is brought by a toggle button click on the admin page. The button is a
 
 - Functions of Toggle Active / Inactive Page
 
-This Toggle Active / Inactive Page allows admin to either de-activate or re-activate the member belonging to the admin's club.
+  This Toggle Active / Inactive Page allows admin to either de-activate or re-activate the member belonging to the admin's club.
 
 - Route of Toggle Active / Inactive Page
 
-The Toggle Active / Inactive Page is at /admin/member/activate?adminid=`<admin id>`&memberid=`<member id>`&membershipstatus=`<membership status>` of the site. The admin id, member id and membership status from the admin page and the row of the member list accordingly are required to be given in the form of a GET request.
+  The Toggle Active / Inactive Page is at /admin/member/activate?adminid=`<admin id>`&memberid=`<member id>`&membershipstatus=`<membership status>` of the site. The admin id, member id and membership status from the admin page and the row of the member list accordingly are required to be given in the form of a GET request.
