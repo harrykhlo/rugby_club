@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is an application for rugby clubs and their members managing their game activities which includes membership, team, game, club managements. The application pages and functions are given in the following sections.
+This is an application for rugby clubs and their members managing their game activities which includes membership, team, game, club managements. The design and assumptions are given in the following sections. The application pages as well as its functions, routes and templates are given in the subsequent sections.
 
 ## Design
 
@@ -29,6 +29,10 @@ This application consists of three pages which are login, member and admin. The 
 
   The login page is at the root "/" of the site.
 
+- Adopted Template
+
+  login.html
+
 ## Member page
 
 This page is brought after a member logged in via the login page.
@@ -48,6 +52,10 @@ This page is brought after a member logged in via the login page.
 - Route of Member Page
 
   The member page is at /member?memberid=`<member id>` of the site. The member id from the login page is required to be given in the form of a GET request.
+
+- Adopted Template
+
+  member.html
 
 ## Member Update Personal Detail Page (is entered from member page)
 
@@ -69,6 +77,10 @@ This page is brought by a button click on the member page. The button is above t
 - Route of Member Update Personal Detail Page
 
   The member page is at /member/update?memberid=`<member id>` of the site. The member id from the member page is required to be given in the form of a GET request.
+
+- Adopted Template
+
+  memberupdate.html
 
 ## Admin page
 
@@ -101,6 +113,10 @@ This page is brought after an admin logged in via the login page.
 
   The admin page is at /admin?adminid=`<admin id>` of the site. The admin id from the login page is required to be given in the form of a GET request.
 
+- Adopted Template
+
+  admin.html
+
 ## Add News Page (is entered from admin page)
 
 This page is brought by a button click on the admin page. The button is at the top of the club news list on the admin page.
@@ -117,6 +133,10 @@ This page is brought by a button click on the admin page. The button is at the t
 - Route of Member Update Personal Detail Page
 
   The Member Update Personal Detail page is at /admin/news/add?clubid=`<club id>`&adminid=`<admin id>` of the site. The club id and the admin id from the admin page are required to be given in the form of a GET request.
+
+- Adopted Template
+
+  adminnewsadd.html
 
 ## Add New Member Page (is entered from admin page)
 
@@ -140,6 +160,10 @@ This page is brought by a button click on the admin page. The button is at the t
 
   The Add New Member page is at admin/member/add?adminid=`<admin id>` of the site. The admin id from admin page is required to be given in the form of a GET request.
 
+- Adopted Template
+
+  adminmemberadd.html
+
 ## Print All Active Club Member Page (is entered from admin page)
 
 This page is brought by a button click on the admin page. The button is at the top of the member list on the admin page.
@@ -162,6 +186,10 @@ This page is brought by a button click on the admin page. The button is at the t
 
   The Print All Active Club Member Page is at /admin/activemember/print?adminid=`<admin id>`&clubid=`<club id>` of the site. The admin id and club id from admin page are required to be given in the form of a GET request.
 
+- Adopted Template
+
+  adminactivememberprint.html
+
 ## Eligibility Report Page (is entered from admin page)
 
 This page is brought by a button click on the admin page. The button is at the top of the member list on the admin page. The date of eligibility is defaulted to be the date on which the admin page is loaded. The date is shown next to the Eligibility Report Button. Users are allowed to change the date from the input box next to the button.
@@ -180,6 +208,10 @@ This page is brought by a button click on the admin page. The button is at the t
 - Route of Eligibility Report Page
 
   The Eligibility Report Page is at /admin/eligibilityreport/print of the site. The eligibility records, club name and date of eligibility are required to be given in the form of a POST request.
+
+- Adopted Template
+
+  admineligibilityreportprint.html
 
 ## Edit Member Page (is entered from admin page)
 
@@ -202,6 +234,10 @@ This page is brought by a button click on the admin page. The button is at the f
 
   The Edit member page is at /admin/member/update?adminid=`<admin id>`&memberid=`<member id>` of the site. The admin id and member id from the admin page and the row of the member list respectively are required to be given in the form of a GET request.
 
+- Adopted Template
+
+  adminmemberupdate.html
+
 ## Assign Team Page (is entered from admin page)
 
 This page is brought by a button click on the admin page. The button is at the second column of the member list on the admin page.
@@ -216,6 +252,10 @@ This page is brought by a button click on the admin page. The button is at the s
 
   The Assign Team Page is at /admin/memberteam/assign?adminid=`<admin id>`&memberid=5691`<member id>` of the site. The admin id and member id from the admin page and the row of the member list respectively are required to be given in the form of a GET request.
 
+- Adopted Template
+
+  adminmemberteamassign.html
+
 ## Toggle Active / Inactive Page (is entered from admin page)
 
 This page is brought by a toggle button click on the admin page. The button is at the third column of the member list on the admin page.
@@ -227,6 +267,10 @@ This page is brought by a toggle button click on the admin page. The button is a
 - Route of Toggle Active / Inactive Page
 
   The Toggle Active / Inactive Page is at /admin/member/activate?adminid=`<admin id>`&memberid=`<member id>`&membershipstatus=`<membership status>` of the site. The admin id, member id and membership status from the admin page and the row of the member list accordingly are required to be given in the form of a GET request.
+
+- Adopted Template
+
+  adminmemberactivate.html
 
 ## Add New Club Team Page (is entered from admin page)
 
@@ -243,6 +287,10 @@ This page is brought by a button click on the admin page. The button is at the t
 
   The Add New Club Team Page is at /admin/clubteam/add?adminid=`<admin id>`&clubid=`<club id>` of the site. The admin id and club id from admin page are required to be given in the form of a GET request.
 
+- Adopted Template
+
+  adminclubteamadd.html
+
 ## Set Away Team Page (is entered from admin page)
 
 This page is brought by a button click on the admin page. The button is at the first column of the club team list on the admin page.
@@ -257,6 +305,10 @@ This page is brought by a button click on the admin page. The button is at the f
 - Route of Set Away Team Page
 
   The Set Away Team Page is at /admin/awayteam/set?adminid=`<admin id>`&teamid=`<home team id>` of the site. The admin id and home team id from admin page and the row of the team list respectively are required to be given in the form of a GET request.
+
+- Adopted Template
+
+  adminawayteamset.html
 
 ## Set Home Team Page (is entered from admin page)
 
@@ -273,7 +325,11 @@ This page is brought by a button click on the admin page. The button is at the s
 
   The Set Home Team Page is at /admin/hometeam/set?adminid=`<admin id>`&teamid=`<away team id>` of the site. The admin id and away team id from admin page and the row of the team list respectively are required to be given in the form of a GET request.
 
-  ## Add New Opposition Team Page (is entered from admin page)
+- Adopted Template
+
+  adminhometeamset.html
+
+## Add New Opposition Team Page (is entered from admin page)
 
 This page is brought by a button click on the admin page. The button is at the top of the other opposition team list on the admin page.
 
@@ -288,3 +344,7 @@ This page is brought by a button click on the admin page. The button is at the t
 - Route of Add New Opposition Team Page
 
   The Add New Club Team Page is at /admin/oppositionteam/add?adminid=`<admin id>`&clubid=`<club id>` of the site. The admin id and club id from the admin page are required to be given in the form of a GET request.
+
+- Adopted Template
+
+  adminoppositionteamadd.html
