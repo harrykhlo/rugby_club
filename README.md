@@ -189,9 +189,19 @@ This page is brought by a button click on the admin page. The button is at the f
 This page is brought by a button click on the admin page. The button is at the second column of the member list on the admin page.
 
 - Functions of Assign Team Page
-  This Assign Team Page allows admin to assign a team to the member belonging to the admin's club. The following details can be updated.
+  This Assign Team Page allows admin to assign a team to the member belonging to the admin's club.
 
   The team belonging to the admin's club and matching with the member grade will be shown in a drop-down list on the page for the Admin's assignment.
 
 - Route of Assign Team Page
   The Assign Team Page is at /admin/memberteam/assign?adminid=`<admin id>`&memberid=5691`<member id>` of the site. The admin id and member id from the admin page and the row of the member list respectively are required to be given in the form of a GET request.
+
+## Toggle Active / Inactive Page (are entered from admin page)
+
+This page is brought by a toggle button click on the admin page. The button is at the third column of the member list on the admin page.
+
+- Functions of Toggle Active / Inactive Page
+  This Toggle Active / Inactive Page allows admin to either de-activate or re-activate the member belonging to the admin's club.
+
+- Route of Toggle Active / Inactive Page
+  The Toggle Active / Inactive Page is at /admin/member/activate?adminid=`<admin id>`&memberid=`<member id>`&membershipstatus=`<membership status>` of the site. The admin id, member id and membership status from the admin page and the row of the member list accordingly are required to be given in the form of a GET request.
