@@ -252,8 +252,23 @@ This page is brought by a button click on the admin page. The button is at the f
   This Set Away Team Page allows the admin to create a home fixture for the team at the row of the list with an opposition team with the same grade. The following information should be given for the home fixture:
 
   - Date time of the fixture; and
-  - Away team selected from a drop-down list.
+  - Opposition away team selected from a drop-down list.
 
 - Route of Set Away Team Page
 
   The Set Away Team Page is at /admin/awayteam/set?adminid=`<admin id>`&teamid=`<home team id>` of the site. The admin id and home team id from admin page and the row of the team list respectively are required to be given in the form of a GET request.
+
+## Set Home Team Page (is entered from admin page)
+
+This page is brought by a button click on the admin page. The button is at the second column of the club team list on the admin page.
+
+- Functions of Set Home Team Page
+
+  This Set Home Team Page allows the admin to create an away fixture for the team at the row of the list with an opposition home team with the same grade. The following information should be given for the home fixture:
+
+  - Date time of the fixture; and
+  - Opposition home team selected from a drop-down list.
+
+- Route of Set Home Team Page
+
+  The Set Home Team Page is at /admin/hometeam/set?adminid=`<admin id>`&teamid=`<away team id>` of the site. The admin id and away team id from admin page and the row of the team list respectively are required to be given in the form of a GET request.
