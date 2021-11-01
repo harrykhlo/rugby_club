@@ -19,12 +19,14 @@ This application consists of three pages which are login, member and admin. The 
 ## Login Page
 
 - Functions of Login Page
+
   There is a drop-down list in which users can find all active member names for logging into the system. The login page can identify user class to be either general member or admin and bring the users to the right page. On this login page, the users can:
 
   - find and select their names on the drop-down list; and
   - click Sign in button to log into an user page which is either member or admin page.
 
 - Route of Login Page
+
   The login page is at the root "/" of the site.
 
 ## Member page
@@ -32,6 +34,7 @@ This application consists of three pages which are login, member and admin. The 
 This page is brought after a member logged in via the login page.
 
 - Functions of Member Page
+
   This member page is shown after a general user gets into the system via the login page. The users can:
 
   - Update their personal details vai a button click bringing the user to a Member Update Personal Detail Page as mentioned in next Section below for entering new details.
@@ -43,6 +46,7 @@ This page is brought after a member logged in via the login page.
   - User's personal details.
 
 - Route of Member Page
+
   The member page is at /member?memberid=`<member id>` of the site. The member id from the login page is required to be given in the form of a GET request.
 
 ## Member Update Personal Detail Page (is entered from member page)
@@ -50,6 +54,7 @@ This page is brought after a member logged in via the login page.
 This page is brought by a button click on the member page. The button is above the list of club news on the member page.
 
 - Functions of Member Update Personal Detail Page
+
   This member update personal detail page is shown after the user click the “Update Personal Detail” button on the member page. The following details can be updated.
 
   - First Name;
@@ -62,6 +67,7 @@ This page is brought by a button click on the member page. The button is above t
   - Birthday.
 
 - Route of Member Update Personal Detail Page
+
   The member page is at /member/update?memberid=`<member id>` of the site. The member id from the member page is required to be given in the form of a GET request.
 
 ## Admin page
@@ -69,6 +75,7 @@ This page is brought by a button click on the member page. The button is above t
 This page is brought after an admin logged in via the login page.
 
 - Functions of Admin Page
+
   This Admin page is shown after an admin user gets into the system via the login page. The admin can find the following information on the page:
 
   - All news belong to admin's club;
@@ -91,6 +98,7 @@ This page is brought after an admin logged in via the login page.
   - Give a list of all active members eligible to play in a specific grade on a given date.
 
 - Route of Admin Page
+
   The admin page is at /admin?adminid=`<admin id>` of the site. The admin id from the login page is required to be given in the form of a GET request.
 
 ## Add News Page (is entered from admin page)
@@ -98,6 +106,7 @@ This page is brought after an admin logged in via the login page.
 This page is brought by a button click on the admin page. The button is at the top of the club news list on the admin page.
 
 - Functions of Add News Page
+
   This Add News Page allows the admin to added a new news. The following information should be included in a news:
 
   - News Header;
@@ -106,6 +115,7 @@ This page is brought by a button click on the admin page. The button is at the t
   - News Content.
 
 - Route of Member Update Personal Detail Page
+
   The Member Update Personal Detail page is at /admin/news/add?clubid=`<club id>`&adminid=`<admin id>` of the site. The club id and the admin id from the admin page are required to be given in the form of a GET request.
 
 ## Add New Member Page (is entered from admin page)
@@ -113,6 +123,7 @@ This page is brought by a button click on the admin page. The button is at the t
 This page is brought by a button click on the admin page. The button is at the top of the member list on the admin page.
 
 - Functions of Add New Member Page
+
   This Add New Member allows the admin to added a new member in the admin's club. The following information should be included in a new member:
 
   - First Name;
@@ -126,6 +137,7 @@ This page is brought by a button click on the admin page. The button is at the t
   - Team.
 
 - Route of Add New Member Page
+
   The Add New Member page is at admin/member/add?adminid=`<admin id>` of the site. The admin id from admin page is required to be given in the form of a GET request.
 
 ## Print All Active Club Member Page (is entered from admin page)
@@ -133,6 +145,7 @@ This page is brought by a button click on the admin page. The button is at the t
 This page is brought by a button click on the admin page. The button is at the top of the member list on the admin page.
 
 - Functions of Print All Active Club Member Page
+
   This Print All Active Club Member Page is given in a new tab showing a list of all active members belonging to the admin's club for printing purposes. The users can use the browser's printing capability to print the list of all active club members. The following member information is included on the list:
 
   - First Name;
@@ -146,6 +159,7 @@ This page is brought by a button click on the admin page. The button is at the t
   - Birthday.
 
 - Route of Print All Active Club Member Page
+
   The Print All Active Club Member Page is at /admin/activemember/print?adminid=`<admin id>`&clubid=`<club id>` of the site. The admin id and club id from admin page are required to be given in the form of a GET request.
 
 ## Eligibility Report Page (is entered from admin page)
@@ -153,6 +167,7 @@ This page is brought by a button click on the admin page. The button is at the t
 This page is brought by a button click on the admin page. The button is at the top of the member list on the admin page. The date of eligibility is defaulted to be the date on which the admin page is loaded. The date is shown next to the Eligibility Report Button. Users are allowed to change the date from the input box next to the button.
 
 - Functions of Eligibility Report Page
+
   This Eligibility Report Page is given in a new tab showing a list of all active member's eligibilities and information belonging to the admin's club for printing purposes. The users can use the browser's printing capability to print the list. The following member information is included on the list:
 
   - Eligibility Grade
@@ -163,6 +178,7 @@ This page is brought by a button click on the admin page. The button is at the t
   - Birthday.
 
 - Route of Eligibility Report Page
+
   The Eligibility Report Page is at /admin/eligibilityreport/print of the site. The eligibility records, club name and date of eligibility are required to be given in the form of a POST request.
 
 ## Edit Member Page (is entered from admin page)
@@ -170,6 +186,7 @@ This page is brought by a button click on the admin page. The button is at the t
 This page is brought by a button click on the admin page. The button is at the first column of the member list on the admin page.
 
 - Functions of Edit Member Page
+
   This Edit Member Page allows admin to update the member details belonging to the admin's club. The following details can be updated.
 
   - First Name;
@@ -182,6 +199,7 @@ This page is brought by a button click on the admin page. The button is at the f
   - Birthday.
 
 - Route of Edit Member Page
+
   The Edit member page is at /admin/member/update?adminid=`<admin id>`&memberid=`<member id>` of the site. The admin id and member id from the admin page and the row of the member list respectively are required to be given in the form of a GET request.
 
 ## Assign Team Page (is entered from admin page)
@@ -189,11 +207,13 @@ This page is brought by a button click on the admin page. The button is at the f
 This page is brought by a button click on the admin page. The button is at the second column of the member list on the admin page.
 
 - Functions of Assign Team Page
+
   This Assign Team Page allows admin to assign a team to the member belonging to the admin's club.
 
   The team belonging to the admin's club and matching with the member grade will be shown in a drop-down list on the page for the Admin's assignment.
 
 - Route of Assign Team Page
+
   The Assign Team Page is at /admin/memberteam/assign?adminid=`<admin id>`&memberid=5691`<member id>` of the site. The admin id and member id from the admin page and the row of the member list respectively are required to be given in the form of a GET request.
 
 ## Toggle Active / Inactive Page (is entered from admin page)
