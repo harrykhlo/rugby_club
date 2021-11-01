@@ -164,3 +164,22 @@ This page is brought by a button click on the admin page. The button is at the t
 
 - Route of Eligibility Report Page
   The Eligibility Report Page is at /admin/eligibilityreport/print of the site. The eligibility records, club name and date of eligibility are required to be given in the form of a POST request.
+
+## Edit Member Page (is entered from admin page)
+
+This page is brought by a button click on the admin page. The button is at the first column of the member list on the admin page.
+
+- Functions of Edit Member Page
+  This Edit Member Page allows admin to update the member details belonging to the admin's club. The following details can be updated.
+
+  - First Name;
+  - Last Name;
+  - Address 1;
+  - Address 2;
+  - City;
+  - Email;
+  - Phone; and
+  - Birthday.
+
+- Route of Edit Member Page
+  The member page is at /admin/member/update?adminid=`<admin id>`&memberid=`<member id>` of the site. The admin id and member id from the admin page and the row of the member list respectively are required to be given in the form of a GET request.
