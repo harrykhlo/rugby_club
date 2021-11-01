@@ -133,7 +133,7 @@ This page is brought by a button click on the admin page. The button is at the t
 This page is brought by a button click on the admin page. The button is at the top of the member list on the admin page.
 
 - Functions of Print All Active Club Member Page
-  This Print All Active Club Member Page is given in a new tab showing a list of all active members belonging to the admin's club for printing purposes. The users can use the brower's printing capability to print the list of all active club members. The following member information is included on the list:
+  This Print All Active Club Member Page is given in a new tab showing a list of all active members belonging to the admin's club for printing purposes. The users can use the browser's printing capability to print the list of all active club members. The following member information is included on the list:
 
   - First Name;
   - Last Name;
@@ -147,3 +147,20 @@ This page is brought by a button click on the admin page. The button is at the t
 
 - Route of Print All Active Club Member Page
   The Print All Active Club Member Page is at /admin/activemember/print?adminid=`<admin id>`&clubid=`<club id>` of the site. The admin id and club id from admin page are required to be given in the form of a GET request.
+
+## Eligibility Report Page (is entered from admin page)
+
+This page is brought by a button click on the admin page. The button is at the top of the member list on the admin page. The date of eligibility is defaulted to be the date on which the admin page is loaded. The date is shown next to the Eligibility Report Button. Users are allowed to change the date from the input box next to the button.
+
+- Functions of Eligibility Report Page
+  This Eligibility Report Page is given in a new tab showing a list of all active member's eligibilities and information belonging to the admin's club for printing purposes. The users can use the browser's printing capability to print the list. The following member information is included on the list:
+
+  - Eligibility Grade
+  - First Name;
+  - Last Name;
+  - Email;
+  - Phone; and
+  - Birthday.
+
+- Route of Eligibility Report Page
+  The Eligibility Report Page is at /admin/eligibilityreport/print of the site. The eligibility records, club name and date of eligibility are required to be given in the form of a POST request.
