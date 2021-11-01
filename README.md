@@ -124,7 +124,7 @@ This page is brought by a button click on the admin page. The button is at the t
 
 - Functions of Add New Member Page
 
-  This Add New Member allows the admin to added a new member in the admin's club. The following information should be included in a new member:
+  This Add New Member Page allows the admin to added a new member in the admin's club. The following information should be included in a new member:
 
   - First Name;
   - Last Name;
@@ -227,3 +227,33 @@ This page is brought by a toggle button click on the admin page. The button is a
 - Route of Toggle Active / Inactive Page
 
   The Toggle Active / Inactive Page is at /admin/member/activate?adminid=`<admin id>`&memberid=`<member id>`&membershipstatus=`<membership status>` of the site. The admin id, member id and membership status from the admin page and the row of the member list accordingly are required to be given in the form of a GET request.
+
+## Add New Club Team Page (is entered from admin page)
+
+This page is brought by a button click on the admin page. The button is at the top of the club team list on the admin page.
+
+- Functions of Add New Club Team Page
+
+  This Add New Club Team Page allows the admin to added a new team in the admin's club. The following information should be included in a new team:
+
+  - Team Name; and
+  - Team Grade.
+
+- Route of Add New Club Team Page
+
+  The Add New Club Team Page is at /admin/clubteam/add?adminid=`<admin id>`&clubid=`<club id>` of the site. The admin id and club id from admin page are required to be given in the form of a GET request.
+
+## Set Away Team Page (is entered from admin page)
+
+This page is brought by a button click on the admin page. The button is at the first column of the club team list on the admin page.
+
+- Functions of Set Away Team Page
+
+  This Set Away Team Page allows the admin to create a home fixture for the team at the row of the list with an opposition team with the same grade. The following information should be given for the home fixture:
+
+  - Date time of the fixture; and
+  - Away team selected from a drop-down list.
+
+- Route of Set Away Team Page
+
+  The Set Away Team Page is at /admin/awayteam/set?adminid=`<admin id>`&teamid=`<home team id>` of the site. The admin id and home team id from admin page and the row of the team list respectively are required to be given in the form of a GET request.
